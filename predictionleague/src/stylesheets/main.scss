@@ -1,0 +1,24 @@
+
+/* All – 모든 해상도에서 해석하는 코드(미디어 쿼리 적용 안 함) */
+#container{
+  min-width:320px;
+  max-width:1280px;
+  margin: 0 auto;
+  overflow:hidden;
+}
+
+/* Mobile – 767px 이하 해상도에서 해석하는 코드 */
+@media (max-width:767px){ … }
+
+/* Tablet & Desktop – 768px 이상 해상도에서 해석하는 코드 */
+@media (min-width:768px){ … }
+
+/* Tablet – 768px~1024px 해상도에서 해석하는 코드 */
+@media (min-width:768px) and (max-width:1024px){ … }
+
+/* Desktop – 1025px 이상 해상도에서 해석하는 코드 */
+@media (min-width:1025px){ … }
+
+/*가변폭 미디어 콘텐츠 */
+img, video{ max-width:100%; height:auto; }
+video{ min-width:100%; }

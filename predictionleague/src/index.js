@@ -8,6 +8,13 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import reducers from './reducers/reducers'
 import routes from './routes'
 
+require("./stylesheets/main.scss");
+require("./stylesheets/header.scss");
+require("./stylesheets/footer.scss");
+require("./stylesheets/predict.scss");
+require("./stylesheets/ranking.scss");
+require("./stylesheets/myCareer.scss");
+
 
 ReactDOM.render(
   <Provider store={createStore(reducers)}>
