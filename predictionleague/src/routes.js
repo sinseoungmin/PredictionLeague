@@ -1,18 +1,20 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import App from './component/App'
-import About from './component/About'
-import Repos from './component/Repos'
-import Repo from './component/Repo'
-import Home from './component/Home'
+import Main from './component/Main'
+import Home from './component/common/Home'
 
 module.exports = (
-  <Route path="/" component={App}>
+  <Route path="/" component={Main}>
     <IndexRoute component={Home}/>
-    <Route path="/repos" component={Repos}>
-      <Route path="/repos/:userName/:repoName" component={Repo}/>
-    </Route>
-    <Route path="/about" component={About}/>
+    <Route path="/home" component={Home} />
   </Route>
+
 )
+
+
+/*
+
+page 이동시 여기다 다 써야 됨
+
+*/
