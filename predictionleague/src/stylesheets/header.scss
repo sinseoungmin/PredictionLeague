@@ -1,10 +1,16 @@
+#headerContainer{
+  width:100%;
+  margin-top:30px;
+  border:1px solid red;
+}
 
-@media screen and (max-width:100px){
-  #headerContainer{background-color:red;}
-}
-@media screen and (min-width:100px) and (max-width:500px){
-  #headerContainer{background-color:blue;}
-}
-@media screen and (min-width:500px){
-  #headerContainer{background-color:black;}
+
+#mainImg{
+  height:24px;
+  width:24px;
+  border: 2px solid gold;
+  border-radius: 14px;
+  -moz-border-radius: 14px;
+  -khtml-border-radius: 14px;
+  -webkit-border-radius: 14px;
 }

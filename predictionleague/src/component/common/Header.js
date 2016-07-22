@@ -5,14 +5,8 @@ var Header = React.createClass({
   render() {
     return (
       <div id = 'headerContainer'>
-        <h1>
-          헤더다 짜샤
-          <ul>
-            <li><Link to="/predict">predict</Link></li>
-            <li><Link to="/ranking">ranking</Link></li>
-            <li><Link to="/myCareer">my career</Link></li>
-          </ul>
-        </h1>
+        <img id="mainImg"  className='inline' src='/image/trophy.png' className='block left' />
+        <div className='block left' style={{fontSize:'25px', fontWeight: '700', marginLeft:"10px"}} > Prediction League </div>
       </div>
     );
   }
