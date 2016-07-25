@@ -14,6 +14,7 @@ require("./stylesheets/footer.scss");
 require("./stylesheets/predict.scss");
 require("./stylesheets/ranking.scss");
 require("./stylesheets/myCareer.scss");
+require("./stylesheets/fonts/_notosans.scss");
 
 
 ReactDOM.render(

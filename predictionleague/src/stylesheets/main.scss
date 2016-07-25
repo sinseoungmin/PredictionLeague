@@ -7,7 +7,18 @@
   overflow:hidden;
 }
 
-.block{display: block}
+
+span {font-family:'NotoSansKR'; font-size:20px}
+
+
+.fixed{position:fixed}
+.absolute{position:absolute}
+.relative{position:relative}
+
+
+.inline{display: inline}
+
+.cleat{clear:both}
 .right{float:right}
 .left{float:left}
 
