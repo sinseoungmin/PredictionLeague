@@ -6,8 +6,10 @@ var Header = React.createClass({
     return (
       <div id = 'headerContainer'>
         <div id = 'headTitle'>
-          <img id="mainImg"  className='inline relative' src='/image/trophy.png' className='block' />
-          <span className='inline relative' style={{fontSize:'25px', fontWeight: '700', marginLeft:"10px"}} > Prediction League </span>
+          <span className='inline' style={{fontSize:'24px', fontWeight: '400'}} > Prediction League </span>
+          <i className="fa fa-user" aria-hidden="true"></i>
+          <i className="fa fa-lock" aria-hidden="true"></i>
+          <i className="fa fa-unlock-alt" aria-hidden="true"></i>
         </div>
         <div id = 'headNav'>
         </div>

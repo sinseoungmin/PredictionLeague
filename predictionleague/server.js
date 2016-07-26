@@ -4,8 +4,8 @@ var WebpackDevServer = require('webpack-dev-server');
 var webpack=require('webpack');
 
 var app = express();
-var port = 3000;
-var devPort = 3001;
+var port = 8070;
+var devPort = 8080;
 
 app.use(express.static(path.join(__dirname, 'public')));
 

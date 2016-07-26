@@ -1,0 +1,14 @@
+#naviContainer{
+  position:fixed;
+  bottom:0px;
+  width:100%;
+  height:56px;
+}
+
+#naviTable{
+  width:100%;
+  td{text-align:center;}
+  td:nth-child(1){
+    color:#E91E63;
+  }
+}

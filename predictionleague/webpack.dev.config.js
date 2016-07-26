@@ -1,10 +1,11 @@
 var webpack = require('webpack');
-
+var port = 8070;
+var devPort = 8080;
 
 module.exports = {
   entry:[
     './src/index.js',
-    'webpack-dev-server/client?http://0.0.0.0:3001',
+    'webpack-dev-server/client?http://0.0.0.0:'+devPort,
     'webpack/hot/only-dev-server'
   ],
 
@@ -20,7 +21,7 @@ module.exports = {
       historyApiFallback: true,
       contentBase: './public',
       proxy: {
-          "*": "http://localhost:3000"
+          "*": "http://localhost:"+port
       }
   },
 
