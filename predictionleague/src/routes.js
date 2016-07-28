@@ -6,6 +6,7 @@ import Home from './component/common/Home'
 import Predict from './component/predict/Predict'
 import Ranking from './component/ranking/Ranking'
 import MyCareer from './component/myCareer/MyCareer'
+import Talking from './component/talking/Talking'
 
 module.exports = (
   <Route path="/" component={Main}>
@@ -13,6 +14,7 @@ module.exports = (
     <Route path="/predict" component={Predict} />
     <Route path="/ranking" component={Ranking} />
     <Route path="/myCareer" component={MyCareer} />
+    <Route path="/talking" component={Talking} />
   </Route>
 
 )

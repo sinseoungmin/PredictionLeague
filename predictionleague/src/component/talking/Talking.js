@@ -2,17 +2,17 @@ import React from 'react'
 import { Link } from 'react-router'
 import utils from '../../utils'
 
-var Ranking = React.createClass({
+var Talking = React.createClass({
   componentDidMount(){
-    utils.naviColor('Ranking');
+    utils.naviColor('Talking');
   },
   render() {
     return (
-      <div id = 'rankingContainer'>
-        <h3> This is ranking </h3>
+      <div id = 'talkingContainer'>
+        <h3> This is talking </h3>
       </div>
     );
   }
 });
 
-module.exports = Ranking;
+module.exports = Talking;

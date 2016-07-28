@@ -27,10 +27,11 @@ body{
 }
 
 #mainBody{
-  margin-top:60px;
   width:360px;
+  margin-top:60px;
   margin-right:auto;
   margin-left:auto;
+  border:1px solid blue;
 }
 
 
@@ -50,9 +51,11 @@ body{
 .left{text-align:left}
 .right{text-align:right}
 
+.size10{font-size:10px}
 .size12{font-size:12px}
 .size15{font-size:15px}
 .size20{font-size:20px}
+.size25{font-size:25px}
 
 
 

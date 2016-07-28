@@ -6,7 +6,7 @@ var Footer = React.createClass({
     return (
       <div id = 'footerContainer'>
         <h3>
-          푸터다 임마
+          Footer
         </h3>
       </div>
     );
