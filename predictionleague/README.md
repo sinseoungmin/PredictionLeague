@@ -19,3 +19,7 @@ server rendering 구현 안됨.
 <필요한 것>
   1. 로고
   2. 도메인 predictionleague.co.kr
+
+
+npm install --save firebase
+npm install --save lodash

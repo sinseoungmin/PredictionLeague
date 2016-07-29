@@ -5,7 +5,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider, connect } from 'react-redux'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-import reducers from './reducers/reducers'
+import store from './store'
+import actions from './actions'
 import routes from './routes'
 
 require("./stylesheets/main.scss");
@@ -13,13 +14,21 @@ require("./stylesheets/fonts/_notosans.scss");
 
 
 ReactDOM.render(
-  <Provider store={createStore(reducers)}>
+  // The top-level Provider is what allows us to `connect` components to the store
+	// using ReactRedux.connect
+  <Provider store={store}>
     <Router history={browserHistory}>
       {routes}
     </Router>
   </Provider>,
   document.getElementById('root')
 );
+
+// setup Firebase listeners
+setTimeout(function(){
+	store.dispatch( actions.startListeningToAuth() );
+	store.dispatch( actions.startListeningToQuotes() );
+});
 
 
 
