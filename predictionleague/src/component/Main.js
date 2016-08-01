@@ -5,8 +5,10 @@ import { Link } from 'react-router'
 import Header from './common/Header'
 import Footer from './common/Footer'
 import Navi from './common/Navi'
+import Login from './common/Login'
 
-var TodoApp = React.createClass({
+
+var Main = React.createClass({
   render() {
     return (
       <div id = 'mainContainer'>
@@ -21,4 +23,4 @@ var TodoApp = React.createClass({
   }
 });
 
-module.exports = TodoApp;
+module.exports = Main;

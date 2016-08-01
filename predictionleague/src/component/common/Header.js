@@ -18,7 +18,7 @@ var Header = React.createClass({
     return (
       <div id = 'headerContainer'>
         <div id = 'headTitle' onClick={homeClick}>
-          <span className='inline' style={{fontSize:'24px', fontWeight: '400'}} > Prediction League </span>
+          <span className='inline' style={{fontSize:'20px', fontWeight: '400'}} > Prediction League </span>
           <i className="fa fa-user" aria-hidden="true"></i>
           <i className="fa fa-lock" aria-hidden="true"></i>
           <i className="fa fa-unlock-alt" aria-hidden="true"></i>

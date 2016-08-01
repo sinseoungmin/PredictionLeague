@@ -9,7 +9,14 @@ var Talking = React.createClass({
   render() {
     return (
       <div id = 'talkingContainer'>
-        <h3> This is talking </h3>
+        <ul className='tabUl'>
+          <li name='talkingLi1' className='talkingTab tabLi tabClick' onClick={utils.tabClick}>전략게시판</li>
+          <li name='talkingLi2' className='talkingTab tabLi' onClick={utils.tabClick}>자유게시판</li>
+        </ul>
+        <div className='tabContainer'>
+          <div id='talkingTab1' className='talkingTab tabContent tabClick'>this is 전략게시판</div>
+          <div id='talkingTab2' className='talkingTab tabContent'>this is 자유게시판</div>
+        </div>
       </div>
     );
   }

@@ -16,7 +16,6 @@ module.exports = (
     <Route path="/myCareer" component={MyCareer} />
     <Route path="/talking" component={Talking} />
   </Route>
-
 )
 
 
