@@ -6,6 +6,7 @@ import Header from './common/Header'
 import Footer from './common/Footer'
 import Navi from './common/Navi'
 import Login from './common/Login'
+import AlertModal from './common/AlertModal'
 
 
 var Main = React.createClass({
@@ -18,6 +19,7 @@ var Main = React.createClass({
         </div>
         <Footer />
         <Navi />
+        <AlertModal />
       </div>
     );
   }

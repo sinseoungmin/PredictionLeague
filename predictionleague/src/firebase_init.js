@@ -8,6 +8,7 @@ var config = {
 };
 
 export default function(store) {
+    console.log('firebase 실행 ===================');
     firebase.initializeApp(config);
     firebase.auth().onAuthStateChanged( user => {
         store.dispatch({
@@ -17,3 +18,10 @@ export default function(store) {
     })
     console.log(firebase);
 }
+
+/*
+  firebase-app
+  firebase-auth
+  firebase-database
+  firebase-storage
+*/
