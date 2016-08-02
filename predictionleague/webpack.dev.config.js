@@ -48,7 +48,11 @@ module.exports = {
       },
       {
           test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-          loader: 'file-loader'
+          loader: 'file-loader?name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.less$/,
+        loader: "style!css!less"
       }
     ]
   }
