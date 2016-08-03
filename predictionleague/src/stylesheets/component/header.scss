@@ -1,7 +1,7 @@
 #headerContainer{
   width:auto;
   padding:15px;
-  background-color:#004D40;
+  background-color:$mainColor;
   color:white;
   //box-shadow:0px 2px 5px gray;
 }
@@ -10,8 +10,6 @@
   position:absolute;
   right:21px;
   top:21px;
-
-
 }
 .login{}
 

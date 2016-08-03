@@ -27,3 +27,9 @@ var AlertModal = React.createClass({
 });
 
 module.exports = AlertModal;
+
+/*
+  <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#testModal">
+    Launch demo modal
+  </button>
+*/

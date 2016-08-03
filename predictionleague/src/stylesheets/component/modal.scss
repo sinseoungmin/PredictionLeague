@@ -1,0 +1,39 @@
+/*  loginModal  */
+#loginModal{
+  position:absolute;
+  top:30%;
+}
+
+.modal-header{border:0px;}
+
+.modal-body{
+  padding:0px 15px 5px;
+
+  .loginInput{
+    width:100%;
+    height:40px;
+    border:0px;
+    border-radius:0px;
+    border-bottom:1px solid #E0E0E0;
+  }
+  .loginInput:focus{
+    outline:none;
+    border-bottom:2px solid #E91E63;
+  }
+  #pwInput{
+    margin-top:10px;
+  }
+}
+
+.modal-footer{
+  border:0px;
+
+  #findPw{
+    position:absolute;
+    left:15px;
+    bottom:22px;
+  }
+  #loginButton{
+    //background-color:$mainColor;
+  }
+}

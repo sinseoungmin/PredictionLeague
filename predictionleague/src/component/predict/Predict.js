@@ -49,9 +49,7 @@ var Predict = React.createClass({
         <div id='predictSummary'>
           2016.08.01 총 베팅금액: 100만원
         </div>
-        <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#testModal">
-          Launch demo modal
-        </button>
+
       </div>
     );
   }

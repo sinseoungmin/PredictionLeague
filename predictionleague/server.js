@@ -7,6 +7,12 @@ var app = express();
 var port = 8070;
 var devPort = 8080;
 
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 if(process.env.NODE_ENV=='development'){
@@ -21,6 +27,12 @@ if(process.env.NODE_ENV=='development'){
 
 app.get('*', function (req, res){
   res.sendFile(path.join(__dirname,'public','index.html'));
+})
+
+app.post('/contactus',function(req,res){
+  var name = req.body.name,
+      id   = req.body.id;
+  res.send('name:'+name +'  id:'+id);
 })
 
 app.listen(port, function () {

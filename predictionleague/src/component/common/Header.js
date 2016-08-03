@@ -13,6 +13,11 @@ const homeClick = ()=>{
   browserHistory.push('/');
 }
 
+const loginClick = ()=>{
+  console.log('로그인');
+  $('#loginModal').modal();
+}
+
 var Header = React.createClass({
   render() {
     return (
@@ -20,7 +25,7 @@ var Header = React.createClass({
         <div id = 'headTitle'>
           <i className="fa fa-bolt"  onClick={homeClick} style={{fontSize:'20px', color:'yellow'}} aria-hidden="true"></i>
           <span className='inline'  onClick={homeClick} style={{fontSize:'20px', fontWeight: '400'}} > Prediction League </span>
-          <i id='menuIcon' className="fa fa-unlock-alt" style={{fontSize:'24px'}} aria-hidden="true"></i>
+          <i id='menuIcon' onClick={loginClick} className="fa fa-unlock-alt" style={{fontSize:'24px'}} aria-hidden="true"></i>
         </div>
         <div id = 'headNav'>
         </div>
