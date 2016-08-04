@@ -1,39 +1,138 @@
-/*  loginModal  */
+/*  로그인 모달  */
 #loginModal{
   position:absolute;
   padding-top:50%;
-}
 
-.modal-header{border:0px;}
+  .modal-header{border:0px;}
 
-.modal-body{
-  padding:0px 15px 5px;
+  .modal-body{
+    padding:0px 15px 5px;
 
-  .loginInput{
-    width:100%;
-    height:40px;
+    .loginInput{
+      width:100%;
+      height:40px;
+      border:0px;
+      border-radius:0px;
+      border-bottom:1px solid #E0E0E0;
+    }
+    .loginInput:focus{
+      outline:none;
+      border-bottom:2px solid #E91E63;
+    }
+    #pwInput{
+      margin-top:10px;
+    }
+  }
+
+  .modal-footer{
     border:0px;
-    border-radius:0px;
-    border-bottom:1px solid #E0E0E0;
-  }
-  .loginInput:focus{
-    outline:none;
-    border-bottom:2px solid #E91E63;
-  }
-  #pwInput{
-    margin-top:10px;
+
+    #findPw{
+      position:absolute;
+      left:15px;
+      bottom:22px;
+    }
+    #loginButton{
+      //background-color:$mainColor;
+    }
   }
 }
 
-.modal-footer{
-  border:0px;
 
-  #findPw{
-    position:absolute;
-    left:15px;
-    bottom:22px;
+/*  회원가입 모달  */
+#joinModal{
+  width:100%;
+  //height:100%;
+
+  .modal-dialog{width:100%;
+    //height:100%;
+    margin:0px;}
+  .modal-content{
+    background-color:#F5F5F5;
+    width:100%;
+    //height:100%;
+    margin:0px;
+    border-radius:0px;
+    border:0px;
   }
-  #loginButton{
-    //background-color:$mainColor;
+  .modal-header{
+    padding-top:30px;
+    padding-bottom:15px;
+    border:0px;
+    text-align:center;
+    color:#01579B;
+  }
+  .modal-body{
+    #joinBody1{background-color:white; margin-bottom:15px;}
+    #joinBody2{background-color:white; margin-bottom:30px;}
+    .joinInput{
+      width:100%;
+      height:50px;
+      padding-left:15px;
+      border:0px;
+      border-radius:0px;
+      border-bottom:1px solid #E0E0E0;
+    }
+    .joinInput:focus{
+      outline:none;
+      border-bottom:2px solid #E91E63;
+    }
+    .joinText{
+      font-size:16px;
+      font-weight:500;
+      text-align:center;
+      margin-bottom:18px;
+    }
+    .joinText2{
+      font-size:13px;
+      font-weight:400;
+      padding-left:2px;
+      margin-bottom:5px;
+    }
+    #joinPositionText{
+      margin-top:30px;
+    }
+    .joinTeam{
+      width:100%;
+      background-color:white;
+      padding:15px;
+      margin-bottom:15px;
+      td{padding:10px;}
+    }
+    .joinNBAlogo{
+      width:100%;
+      //-webkit-filter: grayscale(50%); /* Chrome, Safari, Opera */
+      //filter: grayscale(50%);
+    }
+    .teamClick{
+      background: $pointColor;
+    }
+    .joinPosition{
+      margin-top:0px;
+      padding:0px;
+      width:100%;
+      font-size:13px;
+      font-weight:400;
+      display:table;
+      table-layout: fixed;
+      li{
+        height:100%;
+        padding:5px;
+        text-align:center;
+        color: #9E9E9E;
+        background-color:white;
+        display:table-cell;
+      }
+      .oneClick{
+        border-bottom:2px solid $pointColor;
+        font-weight:500;
+        color:black;
+      }
+    }
+
+
+  }
+  .modal-footer{
+    border:0px;
   }
 }

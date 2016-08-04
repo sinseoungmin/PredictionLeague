@@ -15,7 +15,8 @@ const homeClick = ()=>{
 
 const loginClick = ()=>{
   console.log('로그인');
-  $('#loginModal').modal();
+  //$('#loginModal').modal();
+  $('#joinModal').modal();
 }
 
 var Header = React.createClass({

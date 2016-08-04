@@ -7,7 +7,7 @@ import Footer from './common/Footer'
 import Navi from './common/Navi'
 import Login from './common/Login'
 import LoginModal from './modal/LoginModal'
-
+import JoinModal from './modal/JoinModal'
 
 var Main = React.createClass({
   render() {
@@ -20,6 +20,7 @@ var Main = React.createClass({
         <Footer />
         <Navi />
         <LoginModal />
+        <JoinModal />
       </div>
     );
   }
