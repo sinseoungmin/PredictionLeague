@@ -95,8 +95,7 @@ const sendEmail = ()=>{
     type:"POST",
     dataType: 'text',
     data:{
-      name:'sin',
-      id:'1'
+      email:'the_answ3r@naver.com'
     },
     cache: false,
     success: function(data) {

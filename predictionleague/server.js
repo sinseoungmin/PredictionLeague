@@ -7,11 +7,23 @@ var app = express();
 var port = 8070;
 var devPort = 8080;
 
+/* for sending check-email ===========================*/
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+  service:'Gmail',
+  auth:{
+    user:'answ3rsin@gmail.com',
+    pass:'qmfkqh132!'
+  }
+});
+
 var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
+/* =====================================================*/
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -29,11 +41,26 @@ app.get('*', function (req, res){
   res.sendFile(path.join(__dirname,'public','index.html'));
 })
 
+
+/* for sending check-email2 ===========================*/
 app.post('/contactus',function(req,res){
-  var name = req.body.name,
-      id   = req.body.id;
-  res.send('name:'+name +'  id:'+id);
+  var mailOptions = {
+      from: 'answ3rsin@gmail.com',
+      to: req.body.email, // list of receivers
+      subject: 'Prediction League check-email', // Subject line
+      html: '<b>블라블라블라</b>' // html body
+      //text: 'Hello world', // plaintext body
+  };
+  transporter.sendMail(mailOptions, function(error, info){
+      if(error){
+          res.send('메일발송 실패 / error 확인하세요');
+          //res.send(error);
+      }
+      res.send('Message sent: ' + info.response);
+  });
 })
+/* =====================================================*/
+
 
 app.listen(port, function () {
   console.log('Server running on port ' + port);
