@@ -45,18 +45,19 @@ app.get('*', function (req, res){
 /* for sending check-email2 ===========================*/
 app.post('/contactus',function(req,res){
   var mailOptions = {
-      from: 'answ3rsin@gmail.com',
+      from: 'PredictionLeague@gmail.com',
       to: req.body.email, // list of receivers
-      subject: 'Prediction League check-email', // Subject line
+      subject: 'Check-email', // Subject line
       html: '<b>블라블라블라</b>' // html body
       //text: 'Hello world', // plaintext body
   };
   transporter.sendMail(mailOptions, function(error, info){
       if(error){
           res.send('메일발송 실패 / error 확인하세요');
-          //res.send(error);
+          res.send(error);
       }
-      res.send('Message sent: ' + info.response);
+      res.send('Message sent:');
+      res.send(info);
   });
 })
 /* =====================================================*/
