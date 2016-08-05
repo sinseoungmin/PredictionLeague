@@ -38,12 +38,10 @@
   }
 }
 
-
 /*  회원가입 모달  */
 #joinModal{
   width:100%;
   //height:100%;
-
   .modal-dialog{width:100%;
     //height:100%;
     margin:0px;}
@@ -55,12 +53,19 @@
     border-radius:0px;
     border:0px;
   }
+
   .modal-header{
     padding-top:30px;
     padding-bottom:15px;
     border:0px;
     text-align:center;
     color:#01579B;
+    position:relative;
+    #joinClose{
+      position:absolute;
+      top:17px;
+      right:17px;
+    }
   }
   .modal-body{
     #joinBody1{background-color:white; margin-bottom:15px;}
@@ -73,10 +78,8 @@
       border-radius:0px;
       border-bottom:1px solid #E0E0E0;
     }
-    .joinInput:focus{
-      outline:none;
-      border-bottom:2px solid #E91E63;
-    }
+    .joinInput:focus{outline:none;border-bottom:2px solid #E91E63;}
+
     .joinText{
       font-size:16px;
       font-weight:500;
@@ -89,39 +92,44 @@
       padding-left:2px;
       margin-bottom:5px;
     }
-    #joinPositionText{
-      margin-top:30px;
-    }
+    #joinPositionText{margin-top:30px;}
+
     .joinTeam{
       width:100%;
       background-color:white;
       padding:15px;
       margin-bottom:15px;
-      td{padding:10px;}
+      td{padding:10px;
+      position:relative;}
     }
     .joinNBAlogo{
       width:100%;
-      //-webkit-filter: grayscale(50%); /* Chrome, Safari, Opera */
-      //filter: grayscale(50%);
+      -webkit-filter: grayscale(5%); /* Chrome, Safari, Opera */
+      filter: grayscale(5%);
     }
+    .teamCheck{display:none;}
     .teamClick{
-      background: $pointColor;
+      display:block;
+      font-size:30px;
+      color:$pointColor;
+      position:absolute;
+      left:20px;
+      top:15px;
     }
+
     .joinPosition{
       margin-top:0px;
       padding:0px;
       width:100%;
+      height:40px;
       font-size:13px;
       font-weight:400;
-      display:table;
       table-layout: fixed;
-      li{
-        height:100%;
-        padding:5px;
+      td{
         text-align:center;
         color: #9E9E9E;
         background-color:white;
-        display:table-cell;
+        position:relative;
       }
       .oneClick{
         border-bottom:2px solid $pointColor;
@@ -129,10 +137,22 @@
         color:black;
       }
     }
-
+    .positionCheck{display:none;}
+    .posiClick{
+      display:block;
+      font-size:30px;
+      color:$pointColor;
+      position:absolute;
+      left:20px;
+      top:4px;
+    }
 
   }
-  .modal-footer{
-    border:0px;
+  .modal-footer{border:0px;
+    #joinOkB{
+      width:100%;height:50px;
+      font-size:16px;font-weight:600px;color:01579B;
+      margin:20px 0px;
+    }
   }
 }

@@ -53,16 +53,6 @@ const showClick = ()=>{
 
 }
 
-const logoutClick = ()=>{
-  firebase.auth().signOut().then(function() {
-    // Sign-out successful.
-    console.log('로그아웃');
-  }, function(error) {
-    // An error happened.
-    console.log('로그아웃 실패!!');
-    console.log(error);
-  });
-}
 
 const sendEmail = ()=>{
   $.ajax({
@@ -84,25 +74,25 @@ const sendEmail = ()=>{
   });
 }
 
-const posiClick = (e) =>{
-  let targetName = e.target.getAttribute('name');
 
-  let page = targetName.substr(0,targetName.length-3);
-  let num = targetName.slice(-1);
-
-  //전체적으로 class 제거
-  let pageTab = page + 'Tab';
-  let allTab = document.getElementsByClassName(pageTab);
-  for(var i=0; i<allTab.length;  i++){
-    utils.removeClass(allTab[i],'tabClick');
+const teamClick = (e) =>{
+  let allTeamCheck = document.getElementsByClassName('teamCheck');
+  for(var i=0; i<allTeamCheck.length;  i++){
+    utils.removeClass(allTeamCheck[i],'teamClick');
   }
 
-  //click 된 element 대해서 처리
-  utils.addClass(e.target, 'tabClick');
-  utils.addClass(document.getElementById(pageTab+num), 'tabClick');
+  if(e.target.tagName == 'TD'){utils.addClass(e.target.childNodes[1], 'teamClick')}
+  else{utils.addClass(e.target.parentNode.childNodes[1], 'teamClick')}
 }
-const teamClick = (e) =>{
-  utils.addClass(e.target, 'teamClick');
+const posiClick = (e) =>{
+  console.log(e.target);
+  let allPosiCheck = document.getElementsByClassName('positionCheck');
+  for(var i=0; i<allPosiCheck.length;  i++){
+    utils.removeClass(allPosiCheck[i],'posiClick');
+  }
+
+  if(e.target.tagName == 'TD'){utils.addClass(e.target.childNodes[1], 'posiClick')}
+  else{utils.addClass(e.target.parentNode.childNodes[1], 'posiClick')}
 }
 
 var JoinModal = React.createClass({
@@ -114,6 +104,7 @@ var JoinModal = React.createClass({
           <div className="modal-content">
             <div className="modal-header">
               <span className="modal-title" style={{fontSize:'25px', fontWeight: '700'}}>Prediction League</span>
+              <i id='joinClose' className="fa fa-times fa-2x" onClick={closeClick} aria-hidden="true"></i>
             </div>
             <div className="modal-body">
               <div id='joinBody1'>
@@ -127,6 +118,7 @@ var JoinModal = React.createClass({
               </div>
               <div id='joinBody3'>
                 <div className='joinText'>Select your team!</div>
+
                 <div className='joinText2'>Eastern Conference</div>
                 <table className='joinTeam'>
                   <tbody>
@@ -136,6 +128,7 @@ var JoinModal = React.createClass({
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
                               <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
                         }
@@ -147,6 +140,7 @@ var JoinModal = React.createClass({
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
                               <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
                         }
@@ -158,6 +152,7 @@ var JoinModal = React.createClass({
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
                               <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
                         }
@@ -165,6 +160,7 @@ var JoinModal = React.createClass({
                     </tr>
                   </tbody>
                 </table>
+
                 <div className='joinText2'>Western Conference</div>
                 <table className='joinTeam'>
                   <tbody>
@@ -174,6 +170,7 @@ var JoinModal = React.createClass({
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
                               <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
                         }
@@ -185,6 +182,7 @@ var JoinModal = React.createClass({
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
                               <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
                         }
@@ -196,6 +194,7 @@ var JoinModal = React.createClass({
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
                               <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
                         }
@@ -205,19 +204,31 @@ var JoinModal = React.createClass({
                 </table>
 
                 <div className='joinText' id='joinPositionText'>Select your position!</div>
-                <ul className='joinPosition'>
-                  <li name='pg' className='joinPositionEx' onClick={posiClick}>PG</li>
-                  <li name='sg' className='joinPositionEx' onClick={posiClick}>SG</li>
-                  <li name='sf' className='joinPositionEx' onClick={posiClick}>SF</li>
-                  <li name='pf' className='joinPositionEx' onClick={posiClick}>PF</li>
-                  <li name='c' className='joinPositionEx' onClick={posiClick}>C</li>
-                </ul>
+                <table className='joinPosition'>
+                  <tbody>
+                    <tr>
+                      <td name='pg' className='joinPositionEx' onClick={posiClick}>
+                        PG<i className="fa fa-check positionCheck" aria-hidden="true"></i>
+                      </td>
+                      <td name='sg' className='joinPositionEx' onClick={posiClick}>
+                        SG<i className="fa fa-check positionCheck" aria-hidden="true"></i>
+                      </td>
+                      <td name='sf' className='joinPositionEx' onClick={posiClick}>
+                        SF<i className="fa fa-check positionCheck" aria-hidden="true"></i>
+                      </td>
+                      <td name='pf' className='joinPositionEx' onClick={posiClick}>
+                        PF<i className="fa fa-check positionCheck" aria-hidden="true"></i>
+                      </td>
+                      <td name='c' className='joinPositionEx' onClick={posiClick}>
+                        C<i className="fa fa-check positionCheck" aria-hidden="true"></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-
             </div>
             <div className="modal-footer">
-              <button type="button" id='joinButton' className="btn btn-default"  >회원가입</button>
-              <button type="button" id='loginButton' className="btn btn-primary" >로그인</button>
+              <button type="button" id='joinOkB' className="btn btn-primary" >가입하기</button>
             </div>
           </div>
         </div>
