@@ -53,7 +53,6 @@ const showClick = ()=>{
 
 }
 
-
 const sendEmail = ()=>{
   $.ajax({
     url: '/contactus',
@@ -73,7 +72,6 @@ const sendEmail = ()=>{
     }.bind(this)
   });
 }
-
 
 const teamClick = (e) =>{
   let allTeamCheck = document.getElementsByClassName('teamCheck');
