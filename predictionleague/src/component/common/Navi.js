@@ -34,9 +34,9 @@ var Navi = React.createClass({
                 <i name='ranking' className="fa fa-diamond fa-2x size25" aria-hidden="true"></i>
                 <div name='ranking' className="size10">랭킹</div>
               </td>
-              <td name='myCareer' className='naviTd' id='naviCareer' onClick={naviClick}>
-                <i name='myCareer' className="fa fa-trophy fa-2x size25" aria-hidden="true"></i>
-                <div name='myCareer' className="size10">커리어</div>
+              <td name='career' className='naviTd' id='naviCareer' onClick={naviClick}>
+                <i name='career' className="fa fa-trophy fa-2x size25" aria-hidden="true"></i>
+                <div name='career' className="size10">커리어</div>
               </td>
               <td name='talking' className='naviTd' id='naviTalking' onClick={naviClick}>
                 <i name='talking' className="fa fa-commenting fa-2x size25" aria-hidden="true"></i>

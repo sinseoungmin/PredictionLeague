@@ -5,7 +5,7 @@ $pointColor:#E91E63;
 /*  component  */
 @import "/component/footer.scss";
 @import "/component/header.scss";
-@import "/component/myCareer.scss";
+@import "/component/career.scss";
 @import "/component/predict.scss";
 @import "/component/ranking.scss";
 @import "/component/navi.scss";
@@ -44,6 +44,7 @@ body{
   background-color:$mainColor;
   //box-shadow:0px 2px 5px gray;
   display:table;
+  table-layout: fixed;
   li{
     padding:5px;
     height:100%;
@@ -52,7 +53,7 @@ body{
     display:table-cell;
   }
   .tabClick{
-    border-bottom:2px solid $pointColor;
+    border-bottom:3px solid $pointColor;
     font-weight:400;
     color:white;
   }

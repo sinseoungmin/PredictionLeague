@@ -5,7 +5,7 @@ import Main from './component/Main'
 import Home from './component/common/Home'
 import Predict from './component/predict/Predict'
 import Ranking from './component/ranking/Ranking'
-import MyCareer from './component/myCareer/MyCareer'
+import Career from './component/career/Career'
 import Talking from './component/talking/Talking'
 
 module.exports = (
@@ -13,7 +13,7 @@ module.exports = (
     <IndexRoute component={Home}/>
     <Route path="/predict" component={Predict} />
     <Route path="/ranking" component={Ranking} />
-    <Route path="/myCareer" component={MyCareer} />
+    <Route path="/career" component={Career} />
     <Route path="/talking" component={Talking} />
   </Route>
 )
