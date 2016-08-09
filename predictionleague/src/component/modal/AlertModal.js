@@ -3,24 +3,20 @@ import { Link } from 'react-router'
 
 
 var AlertModal = React.createClass({
-  componentDidMount(){
-    $('#container').append($('#loginModal'));
-  },
   render() {
     return (
       <div className="modal fade" id="alertModal" tabIndex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="false">
         <div className="modal-dialog">
           <div className="modal-content">
+            <div className='modal-header'>
+              <button type="button" className="close" data-dismiss="modal">&times;</button>
+              <div id='alertModalH'></div>
+            </div>
             <div className="modal-body">
-              <div id='alertBody'>
-                <div id='alertImg'></div>
-                <p id='alertBody1'>123</p>
-                <p id='alertBody2'>123</p>
-              </div>
-              <div id='buttons'>
-                <button id='alertOK' className='button olley'>확인</button>
-                <button id='alertCancel' className='button white'>취소</button>
-              </div>
+              <div id='alertModalB'></div>
+            </div>
+            <div className='modal-footer'>
+              <div id='alertModalF'></div>
             </div>
           </div>
         </div>

@@ -1,4 +1,7 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+require('firebase/auth');
+require('firebase/database');
+require('firebase/storage');
 
 var config = {
   apiKey: "AIzaSyDXW6YxUMkNh7s3uQmyIYLUtqYkolasAxY",
@@ -10,13 +13,7 @@ var config = {
 export default function(store) {
     console.log('firebase 실행 ===================');
     firebase.initializeApp(config);
-    firebase.auth().onAuthStateChanged( user => {
-        store.dispatch({
-            type: 'LOGIN',
-            email: user.email
-        })
-    })
-    console.log(firebase);
+    //console.log(firebase);
 }
 
 /*

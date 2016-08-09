@@ -1,3 +1,27 @@
+/*  alert 모달  */
+#alertModal{
+  position:absolute;
+  padding-top:50%;
+
+  .modal-dialog{
+    width:330px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .modal-content{width:100%;}
+  .modal-header{
+    font-size:18px;
+    font-weight:500;
+    border-bottom:0px;
+    text-align:center;
+  }
+  .modal-body{
+    padding-top:0px;
+    padding-bottom:0px;
+  }
+  .modal-footer{padding:0px;}
+}
+
 /*  로그인 모달  */
 #loginModal{
   position:absolute;
@@ -41,6 +65,8 @@
 /*  회원가입 모달  */
 #joinModal{
   width:100%;
+  overflow-x:hidden;
+  overflow-y:auto;
   //height:100%;
   .modal-dialog{width:100%;
     //height:100%;
@@ -68,8 +94,9 @@
     }
   }
   .modal-body{
-    #joinBody1{background-color:white; margin-bottom:15px;}
-    #joinBody2{background-color:white; margin-bottom:30px;}
+    #joinBody1{background-color:white;}
+    #joinBody2{background-color:white; margin-top:15px; position:relative;}
+    #joinBody3{margin-top:30px;}
     .joinInput{
       width:100%;
       height:50px;
@@ -79,6 +106,22 @@
       border-bottom:1px solid #E0E0E0;
     }
     .joinInput:focus{outline:none;border-bottom:2px solid #E91E63;}
+    #joinPwCircle{
+      width:25px;
+      height:25px;
+      font-weight:700;
+      position:absolute;
+      top:13px;right:20px;
+      padding-top:2px;
+      text-align:center;
+      border-radius:30em;
+      background-color:#e2e2e2;
+      border-color:#e2e2e2;
+    }
+    #joinPwA{
+      padding-left:15px;
+      font-size:14px;
+    }
 
     .joinText{
       font-size:16px;

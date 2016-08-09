@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import {connect} from 'react-redux';
 import { browserHistory } from 'react-router'
 import utils from '../../utils'
 
@@ -21,6 +21,8 @@ const loginClick = ()=>{
 
 var Header = React.createClass({
   render() {
+    console.log('header에 있는 state');
+    console.log(this.props.currentState);
     return (
       <div id = 'headerContainer'>
         <div id = 'headTitle'>
@@ -36,8 +38,14 @@ var Header = React.createClass({
   }
 });
 
-module.exports = Header;
+const mapStateToHeaderProps = (state) =>{
+  return {
+    currentState:
+      state
+  };
+}
 
+module.exports = connect(mapStateToHeaderProps)(Header);
 /*
 <i className="fa fa-user" aria-hidden="true"></i>
 <i className="fa fa-lock" aria-hidden="true"></i>

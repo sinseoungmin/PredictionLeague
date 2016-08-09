@@ -5,9 +5,9 @@ import { Link } from 'react-router'
 import Header from './common/Header'
 import Footer from './common/Footer'
 import Navi from './common/Navi'
-import Login from './common/Login'
 import LoginModal from './modal/LoginModal'
 import JoinModal from './modal/JoinModal'
+import AlertModal from './modal/AlertModal'
 
 var Main = React.createClass({
   render() {
@@ -21,6 +21,7 @@ var Main = React.createClass({
         <Navi />
         <LoginModal />
         <JoinModal />
+        <AlertModal />
       </div>
     );
   }

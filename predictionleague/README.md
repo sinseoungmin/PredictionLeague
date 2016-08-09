@@ -1,14 +1,20 @@
 ./
 ├── .babelrc                # babel 설정파일
-├── build                   # 서버 빌드 디렉토리
 ├── package.json		
 ├── public                  # 클라이언트 디렉토리
 │    ├── bundle.js          # 컴파일된 스크립트
 │    └── index.html         # 메인 페이지
 ├── server.js               # 서버 파일
 ├── src
-│    ├── App.js             # App 컴포넌트
-│    └── index.js           # 클라이언트 사이드 메인 스크립트
+│    ├── index.js           # react-router
+│    ├── routes.js          # react-router
+│    ├── utils.js           # 공통함수
+│    ├── firebase_init.js   # firebase 초기세팅
+│    ├── actions            # redux-action
+│    ├── store              # redux-store
+│    ├── data               # 기본 data
+│    ├── componenet         # 화면 구성
+│    └── stylesheets        # 스타일
 ├── webpack.config.js       # webpack 설정파일
 └── webpack.dev.config.js   # webpack-dev-server 를 위한 설정파일
 

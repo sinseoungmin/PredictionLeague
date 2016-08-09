@@ -2,10 +2,11 @@ export default function (state = {}, action) {
   switch (action.type) {
     case 'LOGIN':
       return Object.assign({}, state, {
-        logged: true,
-        email: action.email
+        login:true,
+        email: action.email,
+        id: action.id,
+        nickName: action.nickName
       });
-      break;
     default:
       return state;
   }
