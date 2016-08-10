@@ -22,6 +22,30 @@
   .modal-footer{padding:0px;}
 }
 
+/*  로딩 모달  */
+#loadingModal{
+  position:absolute;
+  padding-top:50%;
+
+  .modal-dialog{
+    width:330px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .modal-content{width:100%;}
+  .modal-header{
+    font-size:20px;
+    font-weight:500;
+    text-align:center;
+    border:0px;
+  }
+  .modal-body{
+    text-align:center;
+    padding:0px 15px;
+  }
+  .modal-footer{border:0px;}
+}
+
 /*  로그인 모달  */
 #loginModal{
   position:absolute;

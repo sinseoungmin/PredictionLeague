@@ -8,6 +8,7 @@ import Navi from './common/Navi'
 import LoginModal from './modal/LoginModal'
 import JoinModal from './modal/JoinModal'
 import AlertModal from './modal/AlertModal'
+import LoadingModal from './modal/LoadingModal'
 
 var Main = React.createClass({
   render() {
@@ -22,6 +23,7 @@ var Main = React.createClass({
         <LoginModal />
         <JoinModal />
         <AlertModal />
+        <LoadingModal />
       </div>
     );
   }

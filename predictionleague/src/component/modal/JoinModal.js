@@ -20,7 +20,7 @@ const idCheck = (id)=>{
       }
       else      {
         $("#joinInfoId").css('display','block');
-        $("#joinInfoId").focus();
+        $("#joinId").focus();
       }
     });
   }
@@ -34,7 +34,7 @@ const nickCheck = (nick)=>{
       }
       else      {
         $("#joinInfoNi").css('display','block');
-        $("#joinInfoNi").focus();
+        $("#joinNickname").focus();
       }
     });
   }
@@ -150,7 +150,9 @@ const joinClick = () =>{
 
 /*  firebase 회원가입  */
 const firebaseJoin = ()=>{
-  console.log('firebaseCheck');
+  console.log('firebase 회원가입 시작');
+  // 로딩바 실행
+  utils.loadingStart();
 
   let id = document.getElementById('joinId').value;
   let nickName = document.getElementById('joinNickname').value;
@@ -159,6 +161,7 @@ const firebaseJoin = ()=>{
   let pw2 = document.getElementById('joinPw2').value;
   let team = document.getElementsByClassName('teamClick')[0].parentNode.getAttribute("name");
   let position = document.getElementsByClassName('posiClick')[0].parentNode.getAttribute("name");
+
 
   // 1) DB에서 중복되는 아이디 있는지 검색
   firebase.database().ref('/id-email/'+ id).once('value').then(function(snapshot) {
@@ -197,6 +200,9 @@ const firebaseJoin = ()=>{
                 position:position
               });
 
+              // 로딩바 꺼!!
+              utils.loadingEnd();
+
             }).catch(function(error) {
               // 4-2) 실패
               console.log('firebase 계정생성 실패!');
@@ -204,30 +210,39 @@ const firebaseJoin = ()=>{
 
               if(error.code=='auth/email-already-in-use'){
                 $("#joinInfoEm").css('display','block');
-                $("#joinInfoEm").focus();
+                $("#joinEmail").focus();
               }
               else if(error.code=='auth/invalid-email'){
                 $("#joinInfoEm2").css('display','block');
-                $("#joinInfoEm2").focus();
+                $("#joinEmail").focus();
               }
+
+              // 로딩바 꺼!!
+              utils.loadingEnd();
             });
           }
           else{
             // 3-2) 비밀번호 다름
-            console.log('비밀번호 다름!!');
+            console.log('비밀번호 불일치!!');
             $("#joinPw").val('');
             $("#joinPw2").val('');
             $("#joinPwAF").text("");
             $("#joinPwAB").text("");
             $("#joinPwA2").css('display','block');
-            $("#joinPwA2").focus();
+            $("#joinPw").focus();
+
+            // 로딩바 꺼!!
+            utils.loadingEnd();
           }
         }
         else{
           // 2-2) 중복되는 닉네임
             console.log('중복 닉네임!!');
           $("#joinInfoNi").css('display','block');
-          $("#joinInfoNi").focus();
+          $("#joinNickname").focus();
+
+          // 로딩바 꺼!!
+          utils.loadingEnd();
         }
       });
     }
@@ -235,9 +250,17 @@ const firebaseJoin = ()=>{
       // 1-2) 중복되는 아이디
       console.log('중복 아이디!!');
       $("#joinInfoId").css('display','block');
-      $("#joinInfoId").focus();
+      $("#joinId").focus();
+
+      // 로딩바 꺼!!
+      utils.loadingEnd();
     }
   });
+}
+
+const testClick = ()=>{
+  utils.loadingStart();
+  setTimeout(utils.loadingEnd,3000);
 }
 
 
@@ -305,7 +328,7 @@ var JoinModal = React.createClass({
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <span className="modal-title" onClick={ableButton} style={{fontSize:'25px', fontWeight: '700'}}>Prediction League</span>
+              <span className="modal-title" onClick={testClick} style={{fontSize:'25px', fontWeight: '700'}}>Prediction League</span>
               <i id='joinClose' className="fa fa-times fa-2x" onClick={closeClick} aria-hidden="true"></i>
             </div>
             <div className="modal-body">

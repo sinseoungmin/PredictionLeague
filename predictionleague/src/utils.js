@@ -64,6 +64,14 @@ utils.makeAlert = (title,contents,footer) =>{
 
   $('#alertModal').modal();
 }
-
+utils.loadingStart = () =>{
+  $('#loadingModal').modal({
+    backdrop:'static',
+    keyboard:false
+  });
+}
+utils.loadingEnd = () =>{
+  $('#loadingModal').modal('toggle');
+}
 
 module.exports = utils;
