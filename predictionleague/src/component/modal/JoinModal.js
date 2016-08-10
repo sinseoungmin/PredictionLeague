@@ -20,7 +20,7 @@ const idCheck = (id)=>{
       }
       else      {
         $("#joinInfoId").css('display','block');
-        $("#joinId").focus();
+        $("#joinInfoId").focus();
       }
     });
   }
@@ -34,7 +34,7 @@ const nickCheck = (nick)=>{
       }
       else      {
         $("#joinInfoNi").css('display','block');
-        $("#joinNickname").focus();
+        $("#joinInfoNi").focus();
       }
     });
   }
@@ -178,7 +178,7 @@ const firebaseJoin = ()=>{
           console.log('새로운 닉네임!!');
 
           // 3) 비밀번호 같은지 확인
-          if(pw === pw2){
+          if(pw !='' && pw2 !='' && pw === pw2){
             // 3-1) 비밀번호 같음
             console.log('비밀번호 일치!!');
 
@@ -207,53 +207,48 @@ const firebaseJoin = ()=>{
               // 4-2) 실패
               console.log('firebase 계정생성 실패!');
               console.log(error);
+              utils.loadingEnd();
 
               if(error.code=='auth/email-already-in-use'){
                 $("#joinInfoEm").css('display','block');
-                $("#joinEmail").focus();
+                document.getElementById("joinEmail").focus();
               }
               else if(error.code=='auth/invalid-email'){
                 $("#joinInfoEm2").css('display','block');
-                $("#joinEmail").focus();
+                document.getElementById("joinEmail").focus();
               }
-
-              // 로딩바 꺼!!
-              utils.loadingEnd();
             });
           }
           else{
             // 3-2) 비밀번호 다름
             console.log('비밀번호 불일치!!');
+            utils.loadingEnd();
+
             $("#joinPw").val('');
             $("#joinPw2").val('');
             $("#joinPwAF").text("");
             $("#joinPwAB").text("");
             $("#joinPwA2").css('display','block');
-            $("#joinPw").focus();
-
-            // 로딩바 꺼!!
-            utils.loadingEnd();
+            document.getElementById("joinPw").focus();
           }
         }
         else{
           // 2-2) 중복되는 닉네임
-            console.log('중복 닉네임!!');
-          $("#joinInfoNi").css('display','block');
-          $("#joinNickname").focus();
-
-          // 로딩바 꺼!!
+          console.log('중복 닉네임!!');
           utils.loadingEnd();
+
+          $("#joinInfoNi").css('display','block');
+          $("#joinInfoNi").focus();
         }
       });
     }
     else{
       // 1-2) 중복되는 아이디
       console.log('중복 아이디!!');
-      $("#joinInfoId").css('display','block');
-      $("#joinId").focus();
-
-      // 로딩바 꺼!!
       utils.loadingEnd();
+
+      $("#joinInfoId").css('display','block');
+      $("#joinInfoId").focus();
     }
   });
 }
