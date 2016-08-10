@@ -238,7 +238,7 @@ const firebaseJoin = ()=>{
           utils.loadingEnd();
 
           $("#joinInfoNi").css('display','block');
-          $("#joinInfoNi").focus();
+          document.getElementById("joinInfoNi").focus();
         }
       });
     }
@@ -248,7 +248,7 @@ const firebaseJoin = ()=>{
       utils.loadingEnd();
 
       $("#joinInfoId").css('display','block');
-      $("#joinInfoId").focus();
+      document.getElementById("joinInfoId").focus();
     }
   });
 }
