@@ -11,6 +11,7 @@ $pointColor:#E91E63;
 @import "/component/navi.scss";
 @import "/component/floatButton.scss";
 @import "/component/modal.scss";
+@import "/component/secretEmail.scss";
 
 
 // 기본 폰트 설정, weight는 100,300,400,500,700,900 사용 가능
@@ -99,13 +100,13 @@ body{
 
 /*  loader 모음  */
 .circleLoader {
-  border: 16px solid #f3f3f3;
+  border: 7px solid $pointColor;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+  border-top: 7px solid white;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
 }
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }

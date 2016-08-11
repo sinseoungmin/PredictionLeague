@@ -5,33 +5,11 @@ import nbaTeam from '../../data/nbaTeam'
 import actions from '../../actions'
 
 
-/*  이메일 발송  */
-const sendEmail = (_email)=>{
-  console.log('이메일: '+_email+' 발송 시작!');
-  $.ajax({
-    url: '/contactus',
-    type:"POST",
-    dataType: 'text',
-    data:{
-      email: _email
-    },
-    cache: false,
-    success: function(data) {
-        // Success..
-        console.log('success');
-        console.log(data);
-    }.bind(this),
-    error:function(req,status,error){
-      alert("code:"+req.status+"\n"+"message:"+req.responseText+"\n"+"error:"+error);
-    }.bind(this)
-  });
-}
-
 /*  모달 닫기  */
 const closeClick = ()=>{
   $('#joinModal').modal('toggle');
 }
-const afterSuccess = (_email)=>{
+const afterSuccess = (_id, _email, _eToken)=>{
   console.log('회원가입 완료!!');
 
   // 1) 모달 정리 후 끄기
@@ -45,7 +23,7 @@ const afterSuccess = (_email)=>{
   $('#joinModal').modal('toggle');
 
   // 2) 인증 이메일 발송
-  sendEmail(_email);
+  utils.sendEmail(_id, _email, _eToken);
 
   // 3) 환영 모달 띄우기
   let title ='';
@@ -253,11 +231,21 @@ const firebaseJoin = ()=>{
                 position:position
               });
 
+              // 5-4) email-token table
+              let eId = email.split('@')[0];
+              let eDomain = email.split('@')[1];
+              let eToken = utils.randKey(23);
+
+              firebase.database().ref('emailToken/' + eId).set({
+                domain:eDomain,
+                eToken:eToken
+              });
+
               // 로딩바 꺼!!
               utils.loadingEnd();
 
-              // 5-4) 이후 process 진행
-              afterSuccess(email);
+              // 5-5) 이후 process 진행
+              afterSuccess(id, email, eToken);
 
 
             }).catch(function(error) {

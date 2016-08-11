@@ -12,6 +12,19 @@ import LoadingModal from './modal/LoadingModal'
 
 var Main = React.createClass({
   render() {
+    if(!!this.props.children.props.route.path){
+      let firstPath = this.props.children.props.route.path.split('/')[1];
+      //console.log(firstPath);
+
+      if(firstPath == 'secretEmail'){
+        return(
+          <div id = 'mainContainer'>
+            {this.props.children}
+          </div>
+        );
+      }
+    }
+
     return (
       <div id = 'mainContainer'>
         <Header />

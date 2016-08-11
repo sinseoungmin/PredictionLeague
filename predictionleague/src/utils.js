@@ -1,6 +1,57 @@
 var utils = {};
 
 
+/*  인증 이메일 발송  */
+utils.sendEmail = (_id, _email, _eToken)=>{
+  console.log('이메일: '+_email+' 발송 시작!');
+  $.ajax({
+    url: '/contactus',
+    type:"POST",
+    dataType: 'text',
+    data:{
+      id: _id,
+      email: _email,
+      eToken: _eToken
+    },
+    cache: false,
+    success: function(data) {
+        // Success..
+        console.log('success');
+        console.log(data);
+    }.bind(this),
+    error:function(req,status,error){
+      console.log("code:"+req.status+"\n"+"message:"+req.responseText+"\n"+"error:"+error);
+    }.bind(this)
+  });
+}
+/*  url에서 para 가져오기  */
+utils.getParameter = (name)=>{
+  let rtnval = '';
+  let nowAddress = unescape(location.href);
+  let parameters = (nowAddress.slice(nowAddress.indexOf('?')+1,nowAddress.length)).split('&');
+  for(let i = 0 ; i < parameters.length ; i++){
+      let varName = parameters[i].split('=')[0];
+      if(varName.toUpperCase() == name.toUpperCase()){
+          rtnval = parameters[i].split('=')[1];
+          break;
+      }
+  }
+  return rtnval;
+}
+/*  random key 생성  */
+utils.randKey = (num) =>{
+  let arraySet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+  'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','W','T','U','V','W','X','Y','Z',
+  '0','1','2','3','4','5','6','7','8','9']
+  let rN = '';
+  for(let i=0; i<num; i++){
+    let randIndex = Math.floor(Math.random()*arraySet.length);
+    rN += arraySet[randIndex];
+  }
+  return rN
+}
+
+
 /*  navi
     뒤로가기 했을 시, 밑의 네비가 색 변경을 위해서 */
 utils.naviColor = (page) =>{
@@ -12,7 +63,7 @@ utils.naviColor = (page) =>{
     let colorNavi = document.getElementById('navi'+page);
     utils.addClass(colorNavi, 'naviClick');
   }
-};
+}
 
 
 
@@ -73,5 +124,7 @@ utils.loadingStart = () =>{
 utils.loadingEnd = () =>{
   $('#loadingModal').modal('toggle');
 }
+
+
 
 module.exports = utils;
