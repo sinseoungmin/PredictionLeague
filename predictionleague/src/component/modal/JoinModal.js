@@ -4,9 +4,62 @@ import utils from '../../utils'
 import nbaTeam from '../../data/nbaTeam'
 import actions from '../../actions'
 
+
+/*  이메일 발송  */
+const sendEmail = (_email)=>{
+  console.log('이메일: '+_email+' 발송 시작!');
+  $.ajax({
+    url: '/contactus',
+    type:"POST",
+    dataType: 'text',
+    data:{
+      email: _email
+    },
+    cache: false,
+    success: function(data) {
+        // Success..
+        console.log('success');
+        console.log(data);
+    }.bind(this),
+    error:function(req,status,error){
+      alert("code:"+req.status+"\n"+"message:"+req.responseText+"\n"+"error:"+error);
+    }.bind(this)
+  });
+}
+
 /*  모달 닫기  */
 const closeClick = ()=>{
   $('#joinModal').modal('toggle');
+}
+const afterSuccess = (_email)=>{
+  console.log('회원가입 완료!!');
+
+  // 1) 모달 정리 후 끄기
+  $("#joinId").val('');
+  $("#joinNickname").val('');
+  $("#joinEmail").val('');
+  $("#joinPw").val('');
+  $("#joinPw2").val('');
+  $("#joinPwAF").text("");
+  $("#joinPwAB").text("");
+  $('#joinModal').modal('toggle');
+
+  // 2) 인증 이메일 발송
+  sendEmail(_email);
+
+  // 3) 환영 모달 띄우기
+  let title ='';
+  let contents = '';
+
+  title += '<div className="size10">Welcome to PL</div>'
+
+  contents += "<div>입력하신 아래 주소로 메일이 발송되었습니다.</div> \n"
+  contents += "<div>이메일: "+_email+"</div> \n"
+  contents += "<div>인증 후, 본격적인 게임을 시작할 수 있습니다.</div> \n"
+  contents += "<div></div> \n"
+  contents += "<div></div> \n"
+
+  utils.makeAlert(title,contents);
 }
 
 
@@ -188,7 +241,7 @@ const firebaseJoin = ()=>{
               console.log('firebase 계정생성 성공!');
 
               // 5-1) id-email table
-              firebase.database().ref('id-email/' + id).set({email});
+              firebase.database().ref('id-email/' + id).set({email:email, validate:'N'});
               // 5-2) nickName table
               firebase.database().ref('nickName/' + nickName).set({statue:'done'});
 
@@ -202,6 +255,10 @@ const firebaseJoin = ()=>{
 
               // 로딩바 꺼!!
               utils.loadingEnd();
+
+              // 5-4) 이후 process 진행
+              afterSuccess(email);
+
 
             }).catch(function(error) {
               // 4-2) 실패
