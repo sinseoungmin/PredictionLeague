@@ -9,6 +9,7 @@ import actions from '../../actions'
 const closeClick = ()=>{
   $('#joinModal').modal('toggle');
 }
+/*  회원가입 성공, 마무리 작업  */
 const afterSuccess = (_id, _email, _eToken)=>{
   console.log('회원가입 완료!!');
 
@@ -34,7 +35,6 @@ const afterSuccess = (_id, _email, _eToken)=>{
   contents += "<div>입력하신 아래 주소로 메일이 발송되었습니다.</div> \n"
   contents += "<div>이메일: "+_email+"</div> \n"
   contents += "<div>인증 후, 본격적인 게임을 시작할 수 있습니다.</div> \n"
-  contents += "<div></div> \n"
   contents += "<div></div> \n"
 
   utils.makeAlert(title,contents);
@@ -231,12 +231,17 @@ const firebaseJoin = ()=>{
                 position:position
               });
 
+              /* 이메일 인증 프로세스
+                  1) email-token table에 아이디와 토큰을 매칭시켜서 저장
+                  2) 고객에게 해당 아이디, 이메일, 토큰을 포함한 url링크를 이메일로 보냄
+                  3) 해당 url 페이지에서 id-email table의 validate값을 'Y'로 함
+              */
               // 5-4) email-token table
               let eId = email.split('@')[0];
               let eDomain = email.split('@')[1];
               let eToken = utils.randKey(23);
 
-              firebase.database().ref('emailToken/' + eId).set({
+              firebase.database().ref('email-token/' + eId).set({
                 domain:eDomain,
                 eToken:eToken
               });
@@ -246,7 +251,6 @@ const firebaseJoin = ()=>{
 
               // 5-5) 이후 process 진행
               afterSuccess(id, email, eToken);
-
 
             }).catch(function(error) {
               // 4-2) 실패

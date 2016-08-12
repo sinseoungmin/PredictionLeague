@@ -8,7 +8,7 @@ const emailValidate = (id, email, eToken) =>{
   let emailId = email.split('@')[0];
   let eDomain = email.split('@')[1];
 
-  firebase.database().ref('/emailToken/'+ emailId).once('value').then(function(snapshot) {
+  firebase.database().ref('/email-token/'+ emailId).once('value').then(function(snapshot) {
     let info = snapshot.val();
     if(info.domain == eDomain && info.eToken == eToken){
       console.log('인증 완료!');

@@ -6,14 +6,13 @@
 - 또한 이메일 인증 process에 대한 정보도 필요함
 - key:id / value: email, validate('Y','N')
 
-## emailToken ##
+## email-token ##
 - 이메일 인증을 위해 이메일과 토큰을 매칭
 - key:email / value:eToken
 
 ## nickName ##
 - 회원가입 시, 중복되는 닉네임이 있는지 확인을 위해
 - key:nickName / value: status
-
 
 ## userInfo ##
 - 사용자의 기본 정보
