@@ -1,11 +1,4 @@
-/*
-var authActions = require("./auth"),
-	quotesActions = require("./quotes"),
-	feedbackActions = require("./feedback");
-
-  module.exports = Object.assign({},authActions,quotesActions,feedbackActions);
-*/
-
 import authActions from './auth'
+import download from './download'
 
-module.exports = Object.assign({},authActions);
+module.exports = Object.assign({},authActions, download);

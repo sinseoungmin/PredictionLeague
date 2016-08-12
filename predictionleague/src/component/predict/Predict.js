@@ -1,25 +1,24 @@
 import React from 'react'
+import {connect} from 'react-redux';
 import { Link } from 'react-router'
 import utils from '../../utils'
 import PredictDetail from './PredictDetail'
 
-//나중엔 서버에서 받아야 함
-import data from '../../data/default'
 
 var Predict = React.createClass({
+
   componentDidMount(){
     utils.naviColor('Predict');
-
-    //경기 data 불러오기
-    //한번에 불러오는게 괜찮을듯?
   },
+
   render() {
-    //임시
-    var data1 = data[0],
-        data2 = data[1],
-        data3 = data[2],
-        data4 = data[3],
-        data5 = data[4];
+    console.log('predict render ===');
+    let gameInfo='';
+    if(!!this.props.gameInfo.gameInfo){
+      gameInfo = this.props.gameInfo.gameInfo;
+    };
+    console.log(gameInfo);
+
     return (
       <div id = 'predictContainer'>
         <ul className='tabUl'>
@@ -31,19 +30,19 @@ var Predict = React.createClass({
         </ul>
         <div className='tabContainer'>
           <div id='predictTab1' className='predictTab tabContent'>
-            <PredictDetail data={data1} />
+            <PredictDetail data={gameInfo[0]} />
           </div>
           <div id='predictTab2' className='predictTab tabContent'>
-            <PredictDetail data={data2} />
+            <PredictDetail data={gameInfo[1]} />
           </div>
           <div id='predictTab3' className='predictTab tabContent tabClick'>
-            <PredictDetail data={data3} />
+            <PredictDetail data={gameInfo[2]} />
           </div>
           <div id='predictTab4' className='predictTab tabContent'>
-            <PredictDetail data={data4} />
+            <PredictDetail data={gameInfo[3]} />
           </div>
           <div id='predictTab5' className='predictTab tabContent'>
-            <PredictDetail data={data5} />
+            <PredictDetail data={gameInfo[4]} />
           </div>
         </div>
         <div id='predictSummary'>
@@ -55,4 +54,12 @@ var Predict = React.createClass({
   }
 });
 
-module.exports = Predict;
+
+const mapStateToPredictProps = (state) =>{
+  return {
+    gameInfo:
+      state.gameInfo
+  };
+}
+
+module.exports = connect(mapStateToPredictProps)(Predict);

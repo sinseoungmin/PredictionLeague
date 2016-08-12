@@ -5,5 +5,6 @@ module.exports = {
     email:'',
     id:'',
     nickName:''
-  }
+  },
+  gameInfo:''
 };

@@ -52,6 +52,24 @@ utils.randKey = (num) =>{
 }
 
 
+/*  plusminus를 통해, 며칠 전후의 날짜를 구할 수 있음 */
+utils.getCurrentDate = (plusminus)=>{
+  let week = new Array('일', '월', '화', '수', '목', '금', '토');
+  let today = new Date();
+
+  let targetDay = new Date(today.valueOf() + plusminus*(24*60*60*1000));
+  let year = targetDay.getFullYear();
+  let month = targetDay.getMonth() + 1;
+  let day = targetDay.getDate();
+  let dayName = week[targetDay.getDay()];
+
+  let rDay = year.toString()+(month.toString().length==2? month.toString() : "0"+month.toString())+day.toString();
+
+  return rDay;
+  //console.log("날짜는 %d-%d-%d %s요일 입니다.", year, month, day, dayName);
+}
+
+
 /*  navi
     뒤로가기 했을 시, 밑의 네비가 색 변경을 위해서 */
 utils.naviColor = (page) =>{
@@ -92,12 +110,10 @@ utils.tabClick = (e) =>{
 utils.addClass = (element, className) =>{
     element.className += " " + className;
 };
-
 utils.removeClass = (element, className) =>{
     let check = new RegExp("(\\s|^)" + className + "(\\s|$)");
     element.className = element.className.replace(check, " ").trim();
 };
-
 utils.toggleClass = (element, className) =>{
     let check = new RegExp("(\\s|^)" + className + "(\\s|$)");
     if (check.test(element.className)) {
@@ -106,6 +122,7 @@ utils.toggleClass = (element, className) =>{
         element.className += " " + className;
     }
 };
+
 
 /*  modal */
 utils.makeAlert = (title,contents,footer) =>{

@@ -41,7 +41,7 @@ var Header = React.createClass({
 const mapStateToHeaderProps = (state) =>{
   return {
     currentState:
-      state
+      state.auth
   };
 }
 

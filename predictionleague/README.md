@@ -19,18 +19,24 @@
 └── webpack.dev.config.js   # webpack-dev-server 를 위한 설정파일
 
 
-server rendering 구현 안됨.
-필요한면 다시 해보기.
+## 해야함
+1) server rendering 구현 안됨.
+2) 필요한면 다시 해보기.
 
-<필요한 것>
-  1. 로고
-  2. 도메인 predictionleague.co.kr
+## 필요한 것
+1) 로고
+2) 도메인 predictionleague.co.kr
 
-
+## 추가 설치함
 npm install --save firebase
 npm install --save lodash
 npm install --save body-parser(1.15.2)
 npm install nodemailer(2.5.0)
 
 
-set up authentication 할 때, database 접근권한 다시 설정해야 함.
+## set up authentication 할 때, database 접근권한 다시 설정해야 함.
+
+
+## redux 설정 시
+1) action/ store/ initialstate 작업 해야함
+2) store.dispatch(actions.gameInfo(game));

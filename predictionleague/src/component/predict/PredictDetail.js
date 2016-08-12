@@ -3,22 +3,30 @@ import { Link } from 'react-router'
 import utils from '../../utils'
 import PredictGame from './PredictGame'
 
-//나중엔 서버에서 받아야 함
-import data from '../../data/default'
 
 var PredictDetail = React.createClass({
   componentDidMount(){
 
   },
   render() {
-    var data = this.props.data;
+    console.log(this.props.data);
     return (
       <div id = 'predictDetailContainer'>
-        <div id='predictType'>
-          single / multi
-        </div>
-        <div id='availableMoney'>
-          배팅 가능 금액: <span>10만원</span>
+        123
+        {/*
+        <div id='predictInfo'>
+          <div id='predictType'>
+            <div id='predictS' className="p-type p-select"  >single</div>
+            <div id='predictM' className="p-type"  >multi</div>
+          </div>
+
+          <div id='availableMoney' style={{fontSize:'15px', fontWeight:'400'}}>
+            배팅 가능 금액: <span>10만원</span>
+          </div>
+          <div id='bettingMoney' style={{fontSize:'15px', fontWeight:'400'}}>
+            배팅 금액:
+          </div>
+          <input type='text'></input>
         </div>
         <div id='predictDate'>{data.date}</div>
         {data.games.map((game,index) =>{
@@ -26,6 +34,7 @@ var PredictDetail = React.createClass({
             <PredictGame key={index} game={game} />
           );
         })}
+        */}
       </div>
     );
   }

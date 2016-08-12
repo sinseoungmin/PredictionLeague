@@ -18,4 +18,22 @@
 - 사용자의 기본 정보
 - 계속해서 추가될 것임
 - key:id
-- value:{email:, nickName:, team:,position:}
+- value:{email:, nickName:, team:, position:}
+
+
+## predict/gameInfo ##
+- 그날에 있는 경기
+- key:date
+- value:{away, away_odds, home, home_odds}
+
+
+
+
+
+
+
+@JoinModal
+- id-email
+- email-token
+- nickName
+- userInfo

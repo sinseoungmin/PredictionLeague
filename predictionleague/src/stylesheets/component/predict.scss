@@ -1,4 +1,44 @@
 #predictContainer{
   width:100%;
   height:400px;
+  position:relative;
+}
+
+#predictDetailContainer{
+  padding-top:25px;
+
+  #predictInfo{margin-bottom:30px;}
+  #predictType{
+    position:absolute;
+    top:60px;
+    right:15px;
+    display:table;
+    table-layout: fixed;
+
+    #predictS{
+      border-top-left-radius:10px;
+      border-bottom-left-radius:10px;
+      border-right:0px;
+    }
+    #predictM{
+      border-top-right-radius:10px;
+      border-bottom-right-radius:10px;
+    }
+    .p-type{
+      display:inline;
+      border:1px solid $mainColor;
+      padding:5px 10px;
+      font-size:15px;
+      font-weight:400;
+    }
+    .p-select{
+      background-color:$mainColor;
+      color:white;
+    }
+  }
+
+}
+
+#predictGameContainer{
+  background-color:#F5F5F5;
 }

@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 
-import test from './test.js';
 import userReducer from './user.js';
+import download from './download.js'
 
 const rootReducer = combineReducers({
-  //test,
+  gameInfo:download,
   auth:userReducer,
   routing
 });
