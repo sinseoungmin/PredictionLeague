@@ -1,13 +1,22 @@
 #predictContainer{
   width:100%;
-  height:400px;
   position:relative;
 }
 
 #predictDetailContainer{
   padding-top:25px;
 
-  #predictInfo{margin-bottom:30px;}
+  #predictDetailLoader{
+    padding-top:120px;
+    height:400px;
+    text-align:center;
+    font-size:20px;
+    font-weight:500;
+
+    #predictDetailLoaderText{margin-top:10px;}
+  }
+
+  #predictInfo{margin-bottom:20px;}
   #predictType{
     position:absolute;
     top:60px;
@@ -39,6 +48,23 @@
 
 }
 
-#predictGameContainer{
-  background-color:#F5F5F5;
+#predictGameTable{
+  width:100%;
+  background-color:$gameColor;
+  margin-bottom:10px;
+  text-align:center;
+
+  td{
+    //border:1px solid black;
+    height:55px;
+  }
+  td:nth-child(1){width:15%;}
+  td:nth-child(2){width:20%;}
+  td:nth-child(3){width:30%;}
+  td:nth-child(4){width:20%;}
+  td:nth-child(5){width:15%;}
+
+  .predictNBAlogo{
+    height:100%;
+  }
 }

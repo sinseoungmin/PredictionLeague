@@ -1,6 +1,7 @@
 /*  variables  */
 $mainColor:#01579B;
 $pointColor:#E91E63;
+$gameColor:#ECEFF1;
 
 /*  component  */
 @import "/component/footer.scss";
@@ -105,6 +106,8 @@ body{
   border-top: 7px solid white;
   width: 60px;
   height: 60px;
+  margin-left:auto;
+  margin-right:auto;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }

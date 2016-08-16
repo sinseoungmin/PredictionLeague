@@ -12,7 +12,7 @@ var Predict = React.createClass({
   },
 
   render() {
-    console.log('predict render ===');
+    console.log('predict render');
     let gameInfo='';
     if(!!this.props.gameInfo.gameInfo){
       gameInfo = this.props.gameInfo.gameInfo;
@@ -46,7 +46,8 @@ var Predict = React.createClass({
           </div>
         </div>
         <div id='predictSummary'>
-          2016.08.01 총 베팅금액: 100만원
+          <div>## predict summary ##</div>
+          <div>블라블라블라</div>
         </div>
 
       </div>
