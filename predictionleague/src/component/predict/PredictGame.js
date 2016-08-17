@@ -17,25 +17,25 @@ var predictGame = React.createClass({
     let rtn = calRtn(game.home_odds,game.away_odds);
 
     return (
-      <table id = 'predictGameTable'>
+      <table className = 'predictGameTable'>
         <tbody>
           <tr>
             <td>
-              <div className='gameProbs'>{(rtn/game.away_odds).toFixed(1)+'%'}</div>
               <div className='gameOdds'>{game.away_odds}</div>
+              <div className='gameProbs'>{(rtn/game.away_odds).toFixed(1)+'%'}</div>
             </td>
             <td>
               <img className='predictNBAlogo' src={'/image/teamLogo/'+game.away+'.gif'} ></img>
             </td>
             <td>
-              vs 또는 시간
+              9:14
             </td>
             <td>
               <img className='predictNBAlogo' src={'/image/teamLogo/'+game.home+'.gif'} ></img>
             </td>
             <td>
-              <div className='gameProbs'>{(rtn/game.home_odds).toFixed(1)+'%'}</div>
               <div className='gameOdds'>{game.home_odds}</div>
+              <div className='gameProbs'>{(rtn/game.home_odds).toFixed(1)+'%'}</div>
             </td>
           </tr>
         </tbody>

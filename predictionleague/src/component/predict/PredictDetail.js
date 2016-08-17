@@ -30,25 +30,48 @@ var PredictDetail = React.createClass({
 
       return (
         <div id = 'predictDetailContainer'>
+          <table id='predictTableHead'>
+            <tbody>
+              <tr>
+                <td>Away</td>
+                <td>vs</td>
+                <td>Home</td>
+                <td> </td>
+                <td>Pick</td>
+              </tr>
+            </tbody>
+          </table>
+          <div id='predictMain'>
+            {data.map((game,index) =>{
+              return(
+                <PredictGame key={index} game={game} />
+              );
+            })}
+            <div id='predictPicks'>
+              {data.map((game,index) =>{
+                return(
+                  <div key={index}>
+                    <div className='predictPicksDiv'>
+                      cavs
+                    </div>
+                    <div className='predictPicksOper'></div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
           <div id='predictInfo'>
+            <div id='predictAmount'>
+              금액
+              <input type='text'></input>
+              /
+              <span>{amount}</span>
+            </div>
             <div id='predictType'>
               <div id='predictS' className="p-type p-select"  >single</div>
               <div id='predictM' className="p-type"  >multi</div>
             </div>
-
-            <div id='availableMoney' style={{fontSize:'15px', fontWeight:'400'}}>
-              배팅 가능 금액: <span>{amount}</span>
-            </div>
-            <div id='bettingMoney' style={{fontSize:'15px', fontWeight:'400'}}>
-              배팅 금액:
-            </div>
-            <input type='text'></input>
           </div>
-          {data.map((game,index) =>{
-            return(
-              <PredictGame key={index} game={game} />
-            );
-          })}
         </div>
       );
     }
