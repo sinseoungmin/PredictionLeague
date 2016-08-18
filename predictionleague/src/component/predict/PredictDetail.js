@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import utils from '../../utils'
 import PredictGame from './PredictGame'
+import PredictBet from './PredictBet'
 
 
 const pTypeClick = (e) =>{
@@ -53,11 +54,11 @@ var PredictDetail = React.createClass({
           <table className='predictDeHead'>
             <tbody>
               <tr>
-                <td>Away</td>
+                <td>원정팀</td>
                 <td>vs</td>
-                <td>Home</td>
+                <td>홈팀</td>
                 <td> </td>
-                <td>Pick</td>
+                <td>예측</td>
               </tr>
             </tbody>
           </table>
@@ -86,10 +87,10 @@ var PredictDetail = React.createClass({
             </div>
             <div className='predictBetting'>
               <div id={'betSingle'+idx} className={'pTab pClick pT'+idx}>
-                single
+                <PredictBet type='single'/>
               </div>
               <div id={'betMulti'+idx} className={'pTab pT'+idx}>
-                multi
+                <PredictBet type='multi'/>
               </div>
             </div>
           </div>
@@ -108,6 +109,7 @@ var PredictDetail = React.createClass({
 });
 
 module.exports = PredictDetail;
+
 /*
 const mapStateToPredictProps = (state) =>{
   return {
