@@ -30,26 +30,21 @@ var Predict = React.createClass({
         </ul>
         <div className='tabContainer'>
           <div id='predictTab1' className='predictTab tabContent'>
-            <PredictDetail data={gameInfo[0]} />
+            <PredictDetail data={gameInfo[0]} idx='1'/>
           </div>
           <div id='predictTab2' className='predictTab tabContent'>
-            <PredictDetail data={gameInfo[1]} />
+            <PredictDetail data={gameInfo[1]} idx='2'/>
           </div>
           <div id='predictTab3' className='predictTab tabContent tabClick'>
-            <PredictDetail data={gameInfo[2]} />
+            <PredictDetail data={gameInfo[2]} idx='3'/>
           </div>
           <div id='predictTab4' className='predictTab tabContent'>
-            <PredictDetail data={gameInfo[3]} />
+            <PredictDetail data={gameInfo[3]} idx='4'/>
           </div>
           <div id='predictTab5' className='predictTab tabContent'>
-            <PredictDetail data={gameInfo[4]} />
+            <PredictDetail data={gameInfo[4]} idx='5'/>
           </div>
         </div>
-        <div id='predictSummary'>
-          <div>## predict summary ##</div>
-          <div>블라블라블라</div>
-        </div>
-
       </div>
     );
   }

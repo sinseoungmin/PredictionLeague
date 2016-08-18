@@ -17,7 +17,7 @@ var predictGame = React.createClass({
     let rtn = calRtn(game.home_odds,game.away_odds);
 
     return (
-      <table className = 'predictGameTable'>
+      <table className = 'predictGaTable'>
         <tbody>
           <tr>
             <td>
