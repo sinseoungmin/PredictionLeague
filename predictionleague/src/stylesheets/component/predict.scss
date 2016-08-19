@@ -24,6 +24,7 @@
     font-size:13px;
     font-weight:500;
     text-align:center;
+    margin-top:40px;
     margin-bottom:5px;
     td:nth-child(1){width:31%;}
     td:nth-child(2){width:16%;}
@@ -111,4 +112,57 @@
 
     }
   }
+}
+
+
+/*  myPredict  */
+
+.myPredictEP{
+  border:2px solid $mainColor;
+  box-shadow:0px 2px 5px gray;
+  width:100%;
+  height:40px;
+
+  td:nth-child(1){
+    padding-left:10px;
+    width:20%;
+    font-size:15px;
+    font-weight:500;
+  }
+  td:nth-child(2){
+    width:60%;
+    font-size:15px;
+    font-weight:500;
+    color:$pointColor;
+  }
+  td:nth-child(3){width:15%; text-align:center;}
+
+  .myPredictUp{display:none}
+}
+.myPredictContents{
+  border:1px solid $mainColor;
+  border-top:0px;
+  padding:5px 0 5px 10px;
+  display:none;
+
+  .myPredictCTable{width:100%}
+  thead{
+    font-size:14px;
+    font-weight:500;
+    border-bottom:1px solid gray;
+    td{height:32px;}
+  }
+  tbody{
+    font-size:13px;
+    td{height:30px; padding-top:5px;}
+    i{font-weight:200;}
+  }
+
+
+  td:nth-child(1){width:12%}
+  td:nth-child(2){width:50%}
+  td:nth-child(3){width:15%}
+  td:nth-child(4){width:16%}
+  td:nth-child(5){width:6%}
+
 }

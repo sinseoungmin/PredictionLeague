@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import utils from '../../utils'
 import PredictGame from './PredictGame'
 import PredictBet from './PredictBet'
+import MyPredict from './MyPredict'
 
 
 const pTypeClick = (e) =>{
@@ -51,6 +52,7 @@ var PredictDetail = React.createClass({
 
       return (
         <div className='predictDetailContainer'>
+          <MyPredict idx={idx}/>
           <table className='predictDeHead'>
             <tbody>
               <tr>
@@ -58,7 +60,7 @@ var PredictDetail = React.createClass({
                 <td>vs</td>
                 <td>홈팀</td>
                 <td> </td>
-                <td>예측</td>
+                <td>Pick</td>
               </tr>
             </tbody>
           </table>

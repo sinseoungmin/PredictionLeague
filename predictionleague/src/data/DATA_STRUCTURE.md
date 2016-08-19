@@ -21,6 +21,11 @@
 - key:id
 - value:{email:, nickName:, team:, position:}
 
+## userBetting ##
+- 사용자가 베팅한 내역
+- userBetting/아이디/날짜/S/원정팀_홈팀 => win, stake, odds
+- userBetting/아이디/날짜/M/index => game:{key:원정팀_홈팀, value:away or home}, stake, odds
+
 ## ranking ##
 - 랭킹 정보
 - 계속 추가될 예정
@@ -33,10 +38,6 @@
 - key:date
 - value:{away, away_odds, home, home_odds}
 
-## userBetting ##
-- 사용자가 베팅한 내역
-- userBetting/아이디/날짜/S/원정팀_홈팀 => win, stake, odds
-- userBetting/아이디/날짜/M/index => game:{key:원정팀_홈팀, value:away or home}, stake, odds
 
 
 @JoinModal
