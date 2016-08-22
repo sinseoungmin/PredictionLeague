@@ -52,7 +52,9 @@ var PredictDetail = React.createClass({
 
       return (
         <div className='predictDetailContainer'>
+
           <MyPredict idx={idx}/>
+
           <table className='predictDeHead'>
             <tbody>
               <tr>
@@ -67,21 +69,18 @@ var PredictDetail = React.createClass({
           <div className='predictDeMain'>
             {data.map((game,index) =>{
               return(
-                <PredictGame key={index} game={game} />
+                <PredictGame key={index} game={game} idx={idx} y={index}/>
               );
             })}
             <div className='predictPicks'>
               {data.map((game,index) =>{
                 return(
-                  <div key={index}>
-                    <div className='predictPicksDiv'>
-                      cavs
-                    </div>
-                  </div>
+                  <div key={index} className={'predictPicksDiv pickPosi'+idx+'_'+index}></div>
                 );
               })}
             </div>
           </div>
+
           <div className='predictDeBet'>
             <div className='predictType'>
               <div className={"pType pClick pT"+idx}  name='Single' onClick={pTypeClick}>single</div>
@@ -89,13 +88,14 @@ var PredictDetail = React.createClass({
             </div>
             <div className='predictBetting'>
               <div id={'betSingle'+idx} className={'pTab pClick pT'+idx}>
-                <PredictBet type='single'/>
+                <PredictBet type='single' idx={idx}/>
               </div>
               <div id={'betMulti'+idx} className={'pTab pT'+idx}>
-                <PredictBet type='multi'/>
+                <PredictBet type='multi' idx={idx}/>
               </div>
             </div>
           </div>
+
           <div className='predictDeSummary'>
             <div>## predict summary ##</div>
             <div>참가자 수:</div>

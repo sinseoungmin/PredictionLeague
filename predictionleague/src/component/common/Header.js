@@ -21,8 +21,8 @@ const loginClick = ()=>{
 
 var Header = React.createClass({
   render() {
-    console.log('header에 있는 state');
-    console.log(this.props.currentState);
+    //console.log('header에 있는 state');
+    //console.log(this.props.currentState);
     return (
       <div id = 'headerContainer'>
         <div id = 'headTitle'>

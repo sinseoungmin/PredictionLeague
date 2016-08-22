@@ -26,10 +26,10 @@ var Predict = React.createClass({
   render() {
     console.log('predict render');
     let gameInfo='';
-    if(!!this.props.gameInfo.gameInfo){
-      gameInfo = this.props.gameInfo.gameInfo;
+    if(!!this.props.gameInfo){
+      gameInfo = this.props.gameInfo;
     };
-    console.log(gameInfo);
+    //console.log(gameInfo);
 
     return (
       <div id = 'predictContainer'>

@@ -43,7 +43,7 @@
       margin-bottom:10px;
       text-align:center;
       border-radius:5px;
-
+      border-collapse: separate;;
       td{height:55px;}
       td:nth-child(1){width:20%;}
       td:nth-child(2){width:20%;}
@@ -51,6 +51,16 @@
       td:nth-child(4){width:20%;}
       td:nth-child(5){width:20%;}
 
+      .predictGameLeft{
+        background-color:#B0BEC5;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      .predictGameRight{
+        background-color:#B0BEC5;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
       .predictNBAlogo{
         width:100%;
       }

@@ -1,9 +1,7 @@
-export default function (state = {}, action) {
+export default function (state = [], action) {
   switch (action.type) {
     case 'GAMEINFO':
-      return Object.assign({}, state, {
-        gameInfo:action.gameInfo
-      });
+      return action.gameInfo;
     default:
       return state;
   }

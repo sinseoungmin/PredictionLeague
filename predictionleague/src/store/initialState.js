@@ -6,5 +6,6 @@ module.exports = {
     id:'',
     nickName:''
   },
-  gameInfo:''
+  gameInfo:'',
+  pick:[]
 };

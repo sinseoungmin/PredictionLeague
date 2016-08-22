@@ -60,7 +60,7 @@ var MyPredict = React.createClass({
       <div className='MyPredictContainer'>
         <table className={'myPredictEP myPEP'+idx} onClick={upDownClick}>
           <tbody><tr>
-            <td>배팅내역</td>
+            <td>베팅내역</td>
             <td>{betNum}</td>
             <td>
               <i className={"fa fa-chevron-down myPredictDown myPAdown"+idx} aria-hidden="true"></i>
