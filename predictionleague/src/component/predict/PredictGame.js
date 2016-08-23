@@ -81,7 +81,7 @@ const gameClick = (game, idx, y, e)=>{
         console.log('error');
     }
     //text
-    $('.pickPosi'+idx+'_'+y).text(win);
+    $('.pickPosi'+idx+'_'+y).text(win.toUpperCase());
     //redux
     if(idx==3){store.dispatch(actions.pickUp(pickedGame));}
     else if(idx==4){store.dispatch(actions.pickUp1(pickedGame));}

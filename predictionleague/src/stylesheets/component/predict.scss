@@ -35,7 +35,7 @@
 
   .predictDeMain{
     position:relative;
-    margin-bottom:25px;
+    margin-bottom:40px;
 
     .predictGaTable{
       width:80%;
@@ -105,24 +105,95 @@
 
     .pType{
       display:table-cell;
-      border:1px solid $mainColor;
+      //border:1px solid $mainColor;
       padding:5px 10px;
-      font-size:15px;
+      font-size:14px;
       font-weight:400;
+      color:$mainColor;
+      background-color:$gameColor;
     }
     .pClick{
+      border-bottom:2px solid $mainColor;
       background-color:$mainColor;
       color:white;
+      font-weight:500;
     }
   }
 
-  .predictBetting{
-    .pTab{
-      display:none;
-      border:1px solid $mainColor
-    }
-    .pClick{display:block;}
+  .pTab{display:none;}
+  .pClick{display:block;}
 
+
+  /* 단일픽 */
+  .betSingleTop{padding:0px 10px 10px;}
+  .betSingleBottom{padding:10px;background-color:$gameColor;}
+  .betSingleTable{
+    width:100%;
+    text-align:center;
+
+    td:nth-child(1){width:11%}
+    td:nth-child(2){width:8%}
+    td:nth-child(3){width:11%}
+    td:nth-child(4){width:24%}
+    td:nth-child(5){width:14%}
+    td:nth-child(6){width:32%}
+    thead{
+      font-size:14px;
+      font-weight:500;
+      td{height:35px;padding-top:5px;}
+    }
+    tbody{
+      font-size:13px;
+      td{height:30px;}
+      td:nth-child(4){color:$pointColor}
+    }
+  }
+
+  /* 복수픽 */
+
+  .betMultiTop{padding:0px 10px 10px;}
+  .betMultiBottom{padding:10px;background-color:$gameColor;}
+  .betMultiTable{
+    width:100%;
+    text-align:center;
+
+    td:nth-child(1){width:20%}
+    td:nth-child(2){width:10%}
+    td:nth-child(3){width:20%}
+    td:nth-child(4){width:25%}
+    td:nth-child(5){width:25%}
+    thead{
+      font-size:14px;
+      font-weight:500;
+      td{height:35px;padding-top:5px;}
+    }
+    tbody{
+      font-size:13px;
+      td{height:30px;}
+      td:nth-child(4){color:$pointColor}
+    }
+  }
+
+  /* bottomTable, input, 원, 버튼 */
+  .betBottomTable{
+    width:100%;
+    margin-bottom:10px;
+    table-layout: fixed;
+
+    td{height:35px;font-weight:500;}
+    td:nth-child(1){font-size:14px;}
+    td:nth-child(2){font-size:15px;text-align:right;}
+
+  }
+  input{text-align:right;width:50%;}
+  .betWon{margin-left:10px;padding-right:5px;font-size:14px;}
+  .betButton{
+    width:100%;
+    height:35px;
+    font-size:14px;
+    font-weight:500;
+    color:white;
+    background-color:$mainColor;
   }
 }
 
