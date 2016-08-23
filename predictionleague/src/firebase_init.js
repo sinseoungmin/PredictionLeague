@@ -17,7 +17,7 @@ const gameInfo= (store)=>{
 
   let t = [];
   for(let i=0; i<5; i++){
-    t[i] = utils.getCurrentDate(i-12);
+    t[i] = utils.getCurrentDate(i-13);
   }
 
   firebase.database().ref('predict/gameInfo/'+t[0]).once('value').then(function(snapshot) {
