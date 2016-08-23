@@ -4,8 +4,8 @@
   position:relative;
 }
 
-/*  predictDetail  */
 
+/*  predictDetail  */
 .predictDetailContainer{
   padding-top:25px;
 
@@ -90,37 +90,39 @@
     }
 
   }
+}
 
-  .predictDeBet{
-    margin-bottom:20px;
 
-    .predictType{
-      width:100%;
-      text-align:center;
-      display:table;
-      table-layout: fixed;
+/* PredictBet */
+.predictBetContainer{
+  margin-bottom:20px;
 
-      .pType{
-        display:table-cell;
-        border:1px solid $mainColor;
-        padding:5px 10px;
-        font-size:15px;
-        font-weight:400;
-      }
-      .pClick{
-        background-color:$mainColor;
-        color:white;
-      }
+  .predictType{
+    width:100%;
+    text-align:center;
+    display:table;
+    table-layout: fixed;
+
+    .pType{
+      display:table-cell;
+      border:1px solid $mainColor;
+      padding:5px 10px;
+      font-size:15px;
+      font-weight:400;
     }
-
-    .predictBetting{
-      .pTab{
-        display:none;
-        border:1px solid $mainColor
-      }
-      .pClick{display:block;}
-
+    .pClick{
+      background-color:$mainColor;
+      color:white;
     }
+  }
+
+  .predictBetting{
+    .pTab{
+      display:none;
+      border:1px solid $mainColor
+    }
+    .pClick{display:block;}
+
   }
 }
 

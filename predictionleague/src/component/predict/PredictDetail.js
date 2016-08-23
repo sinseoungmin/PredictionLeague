@@ -6,24 +6,6 @@ import PredictBet from './PredictBet'
 import MyPredict from './MyPredict'
 
 
-const pTypeClick = (e) =>{
-
-  let idx = document.getElementsByClassName('predictTab tabClick')[1].id.slice(-1);
-
-  //tab과 contents class 제거
-  let allTab = document.getElementsByClassName('pT'+idx);
-  for(var i=0; i<allTab.length;  i++){
-    utils.removeClass(allTab[i],'pClick');
-  }
-
-  //click 된 element 대해서 처리
-  let targetName = e.target.getAttribute('name');
-
-  utils.addClass(e.target, 'pClick');
-  utils.addClass(document.getElementById('bet'+targetName+idx), 'pClick');
-}
-
-
 var PredictDetail = React.createClass({
   componentDidMount(){
 
@@ -81,20 +63,7 @@ var PredictDetail = React.createClass({
             </div>
           </div>
 
-          <div className='predictDeBet'>
-            <div className='predictType'>
-              <div className={"pType pClick pT"+idx}  name='Single' onClick={pTypeClick}>single</div>
-              <div className={"pType pT"+idx}  name='Multi' onClick={pTypeClick}>multi</div>
-            </div>
-            <div className='predictBetting'>
-              <div id={'betSingle'+idx} className={'pTab pClick pT'+idx}>
-                <PredictBet type='single' idx={idx}/>
-              </div>
-              <div id={'betMulti'+idx} className={'pTab pT'+idx}>
-                <PredictBet type='multi' idx={idx}/>
-              </div>
-            </div>
-          </div>
+          <PredictBet idx={idx} />
 
           <div className='predictDeSummary'>
             <div>## predict summary ##</div>
