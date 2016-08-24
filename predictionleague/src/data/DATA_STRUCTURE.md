@@ -21,11 +21,11 @@
 - key:id
 - value:{email:, nickName:, team:, position:, imgUrl, award}
 
-## userBetting ##
+## userPick ##
 - 사용자가 베팅한 내역
-- userBetting/아이디/날짜/S/원정팀_홈팀 => win, stake, odds, hit:'Y'or'N'
-- userBetting/아이디/날짜/M/index => game:{key:원정팀_홈팀, value:away or home}, stake, odds, hit:'Y'or'N'
-- userBetting/아이디/날짜/잔고 => 얼마
+- userPick/아이디/날짜/S/원정팀_홈팀 => win, stake, odds, hit:'Y'or'N'
+- userPick/아이디/날짜/M/index => game:{key:원정팀_홈팀, value:away or home}, stake, odds, hit:'Y'or'N'
+- userPick/아이디/날짜/잔고 => 얼마
 
 ## predict/gameInfo ##
 - 그날에 있는 경기

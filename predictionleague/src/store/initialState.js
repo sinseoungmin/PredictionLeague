@@ -13,5 +13,10 @@ module.exports = {
 		maxOdds:''
   },
   gameInfo:'',
-  pick:[]
+  pick:[],
+  userPick:{
+    s:[],
+    m:[],
+    balance:''
+  }
 };

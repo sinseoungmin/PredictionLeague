@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import utils from '../../utils'
 
@@ -27,41 +28,70 @@ const upDownClick = (e) =>{
   }
 }
 
+
 var MyPredict = React.createClass({
   componentDidMount(){
+    /*  firebase db setting test
+    firebase.database().ref('userPick/cjsdud/20160810/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
+    firebase.database().ref('userPick/cjsdud/20160811/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
+    firebase.database().ref('userPick/cjsdud/20160812/s/okc_gs').set({win:'gs', stake:'20,000', odds:'1.9',hit:'yet'});
+    firebase.database().ref('userPick/cjsdud/20160812/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
+    firebase.database().ref('userPick/cjsdud/20160812/s/ny_chi').set({win:'chi', stake:'13,300', odds:'5.1',hit:'yet'});
+    firebase.database().ref('userPick/cjsdud/20160813/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
+    firebase.database().ref('userPick/cjsdud/20160814/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
+
+    firebase.database().ref('userPick/cjsdud/20160812/m/0').set({
+      game:['cle_sa_0','okc_gs_1','ny_chi_0'],
+      stake:'10,000',
+      odds:'2.1',
+      hit:'yet'
+    });
+    firebase.database().ref('userPick/cjsdud/20160812/m/1').set({
+      game:['por_hou_1','phi_lal_1'],
+      stake:'40,000',
+      odds:'12.1',
+      hit:'yet'
+    });
+    firebase.database().ref('userPick/cjsdud/20160812/m/2').set({
+      game:['lac_lal_0'],
+      stake:'10,000',
+      odds:'32.1',
+      hit:'yet'
+    });
+
+    firebase.database().ref('userPick/cjsdud/20160810/balance').set('100,000');
+    firebase.database().ref('userPick/cjsdud/20160811/balance').set('10,000');
+    firebase.database().ref('userPick/cjsdud/20160812/balance').set('100,000');
+    firebase.database().ref('userPick/cjsdud/20160813/balance').set('10');
+    firebase.database().ref('userPick/cjsdud/20160814/balance').set('2,000');
+    */
 
   },
   render() {
     let idx = this.props.idx;
-    let data = [
-      {
-        type:'복수',
-        win:'cavs x sa x min x hou x det',
-        odds:'2.1',
-        stake:'30,000',
-      },
-      {
-        type:'단일',
-        win:'cavs',
-        odds:'2.1',
-        stake:'50,000',
-      },
-      {
-        type:'단일',
-        win:'sa',
-        odds:'1.22',
-        stake:'20,000',
-      }
+    let userPick = this.props.userPick[idx-1];
+    let multiPick = [];
+    let singlePick = [];
 
-    ];
-    let betNum = 10;
+    if(!userPick){
+      return(<div></div>);
+    }
+
+    if(!!userPick.m){
+      multiPick = userPick.m;
+    }
+    if(!!userPick.s){
+      singlePick = userPick.s;
+    }
+
+    console.log(userPick);
 
     return (
       <div className='MyPredictContainer'>
         <table className={'myPredictEP myPEP'+idx} onClick={upDownClick}>
           <tbody><tr>
             <td>베팅내역</td>
-            <td>{betNum}</td>
+            <td>{multiPick.length + Object.keys(singlePick).length}</td>
             <td>
               <i className={"fa fa-chevron-down myPredictDown myPAdown"+idx} aria-hidden="true"></i>
               <i className={"fa fa-chevron-up myPredictUp myPAup"+idx} aria-hidden="true"></i>
@@ -76,18 +106,38 @@ var MyPredict = React.createClass({
               </tr>
             </thead>
             <tbody>
-              {data.map((game,index) =>{
+              {multiPick.map((pick,index) =>{
                 return(
                   <tr key={index}>
-                    <td>{game.type}</td>
-                    <td>{game.win}</td>
-                    <td>{game.odds}</td>
-                    <td>{game.stake}</td>
+                    <td>복수</td>
+                    <td>{pick.game.map(
+                        (game,index) =>{
+                          return(
+                            <div key={index}>{game + ' and '}</div>
+                          );
+                        }
+                      )}</td>
+                    <td>{pick.odds}</td>
+                    <td>{pick.stake}</td>
                     <td>
                       <i className="fa fa-times" aria-hidden="true"></i>
                     </td>
                   </tr>
                 );
+              })}
+              {Object.keys(singlePick).map(function(key, index) {
+                 let pick = singlePick[key];
+                 return(
+                   <tr key={index}>
+                     <td>단일</td>
+                     <td>{pick.win}</td>
+                     <td>{pick.odds}</td>
+                     <td>{pick.stake}</td>
+                     <td>
+                       <i className="fa fa-times" aria-hidden="true"></i>
+                     </td>
+                   </tr>
+                 );
               })}
             </tbody>
           </table>
@@ -97,14 +147,11 @@ var MyPredict = React.createClass({
   }
 });
 
-module.exports = MyPredict;
-/*
-const mapStateToPredictProps = (state) =>{
+const mapStateToMyPredictProps = (state) =>{
   return {
-    gameInfo:
-      state.gameInfo
+    userPick:
+      state.userPick
   };
 }
 
-module.exports = connect(mapStateToPredictProps)(Predict);
-*/
+module.exports = connect(mapStateToMyPredictProps)(MyPredict);

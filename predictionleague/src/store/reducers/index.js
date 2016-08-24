@@ -6,6 +6,7 @@ import download from './download.js'
 import pickReducer from './pick.js'
 import pickReducer1 from './pick1.js'
 import pickReducer2 from './pick2.js'
+import userPickReducer from './userPick.js'
 
 const rootReducer = combineReducers({
   userInfo:userReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   pick:pickReducer,
   pick1:pickReducer1,
   pick2:pickReducer2,
+  userPick:userPickReducer,
   routing
 });
 

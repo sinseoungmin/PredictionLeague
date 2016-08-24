@@ -33,6 +33,9 @@ const loginCheck = (store)=>{
         /*  redux state로 userInfo 넘기기  */
         console.log('=================== userInfo download!!!');
         store.dispatch(actions.login(email,id,imgUrl,nickName,team,position,cWinnings,aRate,maxOdds));
+
+        /*  베팅내역 불러오기  */
+        userPick(store, id);
       });
     }
     else {
@@ -41,10 +44,43 @@ const loginCheck = (store)=>{
   });
 }
 
+/*  베팅내역 불러오기  */
+const userPick= (store, id)=>{
+
+  let pick = [];
+
+  let t = [];
+  for(let i=0; i<5; i++){
+    t[i] = utils.getCurrentDate(i-13);
+  }
+
+  firebase.database().ref('userPick/'+id+'/'+t[0]).once('value').then(function(snapshot) {
+    pick[0] = snapshot.val();
+
+    firebase.database().ref('userPick/'+id+'/'+t[1]).once('value').then(function(snapshot) {
+      pick[1] = snapshot.val();
+
+      firebase.database().ref('userPick/'+id+'/'+t[2]).once('value').then(function(snapshot) {
+        pick[2] = snapshot.val();
+
+        firebase.database().ref('userPick/'+id+'/'+t[3]).once('value').then(function(snapshot) {
+          pick[3] = snapshot.val();
+
+          firebase.database().ref('userPick/'+id+'/'+t[4]).once('value').then(function(snapshot) {
+            pick[4] = snapshot.val();
+
+            console.log('=================== userPick download!!!');
+            store.dispatch(actions.download(pick));
+          });
+        });
+      });
+    });
+  });
+}
+
 /*  game 정보 불러오기  */
 const gameInfo= (store)=>{
   let game = [];
-  let self = this;
 
   let t = [];
   for(let i=0; i<5; i++){
@@ -75,6 +111,8 @@ const gameInfo= (store)=>{
     });
   });
 }
+
+
 
 export default function(store) {
     console.log('=================== firebase 실행 ');
