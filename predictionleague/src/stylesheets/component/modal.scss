@@ -65,7 +65,7 @@
     }
     .loginInput:focus{
       outline:none;
-      border-bottom:2px solid #E91E63;
+      border-bottom:2px solid $pointColor;
     }
     #pwInput{
       margin-top:10px;

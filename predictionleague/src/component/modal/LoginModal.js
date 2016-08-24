@@ -6,9 +6,30 @@ const loginClick = ()=>{
   let id = document.getElementById('idInput').value;
   let pw = document.getElementById('pwInput').value;
 
-  //로그인
-  firebase.auth().signInWithEmailAndPassword(id, pw).catch(function(error) {
-    console.log(error);
+  /* 1)가입된 아이디 인지 확인 */
+  firebase.database().ref('id-email/'+id).once('value').then(function(snapshot) {
+    if(!snapshot.val()){
+      console.log('없는 아이디 입니다.');
+      return;
+    }
+
+    /* 2)이메일 인증이 된 아이디 인지 확인 */
+    let validate = snapshot.val().validate;
+    let email  = snapshot.val().email;
+
+    if(validate == 'Y'){
+
+      /* 3)firebase 로그인 */
+      firebase.auth().signInWithEmailAndPassword(email, pw).catch(function(error) {
+        console.log(error);
+      });
+    }
+    else if(validate == 'N'){
+      console.log('아직 인증되지 않은 이메일 입니다.');
+    }
+    else{
+      console.log('시스템 에러 입니다.');
+    }
   });
 }
 

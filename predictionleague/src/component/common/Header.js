@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { browserHistory } from 'react-router'
 import utils from '../../utils'
 
+
 const homeClick = ()=>{
   //아래 네비 색 없애기
   let naviTd = document.getElementsByClassName("naviTd");
@@ -14,15 +15,17 @@ const homeClick = ()=>{
 }
 
 const loginClick = ()=>{
-  console.log('로그인');
-  //$('#loginModal').modal();
-  $('#joinModal').modal();
+  $('#loginModal').modal();
+  //$('#joinModal').modal();
 }
 
 var Header = React.createClass({
+  componentDidMount(){
+
+  },
   render() {
-    //console.log('header에 있는 state');
-    //console.log(this.props.currentState);
+    console.log('header에 있는 state');
+    console.log(this.props.currentState);
     return (
       <div id = 'headerContainer'>
         <div id = 'headTitle'>
@@ -41,7 +44,7 @@ var Header = React.createClass({
 const mapStateToHeaderProps = (state) =>{
   return {
     currentState:
-      state.auth
+      state.userInfo
   };
 }
 

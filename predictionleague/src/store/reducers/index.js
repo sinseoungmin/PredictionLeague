@@ -8,8 +8,8 @@ import pickReducer1 from './pick1.js'
 import pickReducer2 from './pick2.js'
 
 const rootReducer = combineReducers({
+  userInfo:userReducer,
   gameInfo:download,
-  auth:userReducer,
   pick:pickReducer,
   pick1:pickReducer1,
   pick2:pickReducer2,

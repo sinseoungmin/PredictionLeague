@@ -1,5 +1,40 @@
 var utils = {};
 
+/*  천의 자리  */
+utils.makeComma = (num)=>{
+  if(!num){
+    return 0;
+  }
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+/*  돈 단위  */
+utils.moneyUnit = (money) =>{
+  if("" === money){
+    return [];
+  }
+  var goalAmount=[];
+  var goalUnit=[];
+
+  if(money>=10000){
+    goalAmount.push(Math.floor(money/10000));
+    goalUnit.push('억');
+    if (money%10000!=0){
+      goalAmount.push((money%10000));
+      goalUnit.push('만원');
+      return [[goalAmount[0],goalUnit[0]],[goalAmount[1],goalUnit[1]]];
+    }
+    else{
+      goalUnit=['억원'];
+      return [[goalAmount[0],goalUnit[0]]];
+    }
+  }
+  else{
+    goalAmount.push(money);
+    goalUnit.push('만원');
+    return [[goalAmount[0],goalUnit[0]]];
+  }
+}
+
 
 /*  인증 이메일 발송  */
 utils.sendEmail = (_id, _email, _eToken)=>{

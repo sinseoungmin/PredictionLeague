@@ -31,17 +31,17 @@ const betSingleChange = (pick, idx, e) =>{
 
     total += Number(value);
 
-    $('.betSinglePossWinnings'+idx+'_'+i).html("<div>"+Number(value).toLocaleString('en')+"</div>");
+    $('.betSinglePossWinnings'+idx+'_'+i).html("<div>"+utils.makeComma(value)+"</div>");
   }
 
-  $('.betSingleTotalAmount'+idx).html("<div>"+Number(pick.length * e.target.value).toLocaleString('en')+"<span class='betWon'>원</span></div>");
-  $('.betSingleTotalWinnings'+idx).html("<div>"+Number(total).toLocaleString('en')+"<span class='betWon'>원</span></div>");
+  $('.betSingleTotalAmount'+idx).html("<div>"+utils.makeComma(pick.length * e.target.value)+"<span class='betWon'>원</span></div>");
+  $('.betSingleTotalWinnings'+idx).html("<div>"+utils.makeComma(total)+"<span class='betWon'>원</span></div>");
 }
 const betMultiChange = (idx, e) =>{
   let odds = $('.betMultiOdds'+idx).text();
   let win = e.target.value * Number(odds);
 
-  $('.betMultiTotalWinnings'+idx).html("<div>"+Number(win).toLocaleString('en')+"<span class='betWon'>원</span></div>");
+  $('.betMultiTotalWinnings'+idx).html("<div>"+utils.makeComma(win.toFixed(0))+"<span class='betWon'>원</span></div>");
 }
 
 const renderReset = (idx) =>{
@@ -110,7 +110,7 @@ var PredictBet = React.createClass({
               <table className='betSingleTable'>
                 <thead>
                   <tr>
-                    <td colSpan='3'>경기</td><td>승리팀</td><td>배당률</td><td>예상적중금액</td>
+                    <td></td><td>경기</td><td></td><td>승리팀</td><td>배당률</td><td>예상적중금액</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -154,7 +154,7 @@ var PredictBet = React.createClass({
               <table className='betMultiTable'>
                 <thead>
                   <tr>
-                    <td colSpan='3'>경기</td><td>승리팀</td><td>배당률</td>
+                    <td></td><td>경기</td><td></td><td>승리팀</td><td>배당률</td>
                   </tr>
                 </thead>
                 <tbody>

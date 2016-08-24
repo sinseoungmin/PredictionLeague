@@ -214,9 +214,16 @@ const firebaseJoin = ()=>{
             console.log('비밀번호 일치!!');
 
             // 4) firebase 회원가입
-            firebase.auth().createUserWithEmailAndPassword(email, pw).then(function(val) {
+            firebase.auth().createUserWithEmailAndPassword(email, pw).then(function(user) {
               // 4-1) 성공
               console.log('firebase 계정생성 성공!');
+
+              // 4-1-1) firebase displayname에 아이디 넣기
+              user.updateProfile({displayName: id,});
+
+              // 4-1-2) 회원가입 시 자동으로 로그인 되기 때문에, 로그아웃 시키기
+              firebase.auth().signOut();
+
 
               // 5-1) id-email table
               firebase.database().ref('id-email/' + id).set({email:email, validate:'N'});

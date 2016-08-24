@@ -1,9 +1,15 @@
-const login = (email,id,nickName) =>{
+const login = (email,id,imgUrl,nickName,team,position,cWinnings,aRate,maxOdds) =>{
 	return {
 		type:'LOGIN',
 		email,
 		id,
-		nickName
+		imgUrl,
+		nickName,
+		team,
+		position,
+		cWinnings,
+		aRate,
+		maxOdds
 	};
 }
 

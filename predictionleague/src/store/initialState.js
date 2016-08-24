@@ -1,10 +1,16 @@
 
 module.exports = {
-  auth:{
+  userInfo:{
     login:false,
     email:'',
     id:'',
-    nickName:''
+    imgUrl:'',
+		nickName:'',
+		team:'',
+		position:'',
+		cWinnings:'',
+		aRate:'',
+		maxOdds:''
   },
   gameInfo:'',
   pick:[]
