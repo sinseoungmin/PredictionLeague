@@ -1,19 +1,17 @@
-const download = (userPick) =>{
-  return {
-    type:'DOWNLOAD',
-    userPick
-  }
-}
-const singleUp = (pick) =>{
+const singleUp = (idx, stake, pick) =>{
 	return {
 		type:'SINGLEUP',
-    pick
+    pick,
+		idx,
+		stake
 	};
 }
-const singleDown = (pick) =>{
+const singleDown = (idx, key, pick) =>{
 	return {
 		type:'SINGLEDOWN',
-    pick
+    pick,
+		idx,
+		key
 	};
 }
 const multiUp = (pick) =>{
@@ -28,11 +26,18 @@ const multiDown = (pick) =>{
     pick
 	};
 }
+const calBalance = (idx, balance) =>{
+	return{
+		type:'CALBALANCE',
+		idx,
+		balance
+	};
+}
 
 module.exports = {
-	download,
 	singleUp,
   singleDown,
   multiUp,
-  multiDown
+  multiDown,
+	calBalance
 };

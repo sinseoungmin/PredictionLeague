@@ -4,7 +4,14 @@ const gameInfo = (gameInfo) =>{
     gameInfo
 	};
 }
+const userPick = (userPick) =>{
+  return {
+    type:'USERPICK',
+    userPick
+  }
+}
 
 module.exports = {
-	gameInfo
+	gameInfo,
+	userPick
 };

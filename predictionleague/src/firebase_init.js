@@ -51,7 +51,7 @@ const userPick= (store, id)=>{
 
   let t = [];
   for(let i=0; i<5; i++){
-    t[i] = utils.getCurrentDate(i-13);
+    t[i] = utils.getCurrentDate(i-15);
   }
 
   firebase.database().ref('userPick/'+id+'/'+t[0]).once('value').then(function(snapshot) {
@@ -70,7 +70,7 @@ const userPick= (store, id)=>{
             pick[4] = snapshot.val();
 
             console.log('=================== userPick download!!!');
-            store.dispatch(actions.download(pick));
+            store.dispatch(actions.userPick(pick));
           });
         });
       });
@@ -84,7 +84,7 @@ const gameInfo= (store)=>{
 
   let t = [];
   for(let i=0; i<5; i++){
-    t[i] = utils.getCurrentDate(i-13);
+    t[i] = utils.getCurrentDate(i-15);
   }
 
   firebase.database().ref('predict/gameInfo/'+t[0]).once('value').then(function(snapshot) {

@@ -134,20 +134,20 @@ var PredictGame = React.createClass({
       <table className = 'predictGaTable'>
         <tbody>
           <tr>
-            <td className='awayOdds' onClick={gameClick.bind(this, game, idx, y)}>
+            <td className={'awayOdds awayOdds'+idx} onClick={gameClick.bind(this, game, idx, y)}>
               <div className='gameOdds'>{game.away_odds}</div>
               <div className='gameProbs'>{(rtn/game.away_odds).toFixed(1)+'%'}</div>
             </td>
-            <td className='awayLogo' onClick={gameClick.bind(this, game, idx, y)}>
+            <td className={'awayLogo awayLogo'+idx} onClick={gameClick.bind(this, game, idx, y)}>
               <img className='predictNBAlogo' src={'/image/teamLogo/'+game.away+'.gif'} ></img>
             </td>
             <td>
               9:14
             </td>
-            <td className='homeLogo' onClick={gameClick.bind(this, game, idx, y)}>
+            <td className={'homeLogo homeLogo'+idx} onClick={gameClick.bind(this, game, idx, y)}>
               <img className='predictNBAlogo' src={'/image/teamLogo/'+game.home+'.gif'} ></img>
             </td>
-            <td className='homeOdds' onClick={gameClick.bind(this, game, idx, y)}>
+            <td className={'homeOdds homeOdds'+idx} onClick={gameClick.bind(this, game, idx, y)}>
               <div className='gameOdds'>{game.home_odds}</div>
               <div className='gameProbs'>{(rtn/game.home_odds).toFixed(1)+'%'}</div>
             </td>

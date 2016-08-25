@@ -9,6 +9,8 @@ export default function (state = [], action) {
         return el.away !== action.game.away
       });
       return newArr;
+    case 'PICKCLEAN':
+      return [];
     default:
       return state;
   }

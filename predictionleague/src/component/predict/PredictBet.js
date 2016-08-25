@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router'
 import utils from '../../utils'
 
+import actions from '../../actions'
+import {store} from '../../index'
+
 
 const pTypeClick = (e) =>{
 
@@ -20,6 +23,7 @@ const pTypeClick = (e) =>{
   utils.addClass(e.target, 'pClick');
   utils.addClass(document.getElementById('bet'+targetName+idx), 'pClick');
 }
+
 
 const betSingleChange = (pick, idx, e) =>{
   let total=0;
@@ -44,6 +48,8 @@ const betMultiChange = (idx, e) =>{
   $('.betMultiTotalWinnings'+idx).html("<div>"+utils.makeComma(win.toFixed(0))+"<span class='betWon'>원</span></div>");
 }
 
+
+/* redux state를 변경해도 지워지지 않는 class, text 직접 지움 */
 const renderReset = (idx) =>{
   // single
   $('.betSI'+idx).val('');
@@ -55,6 +61,69 @@ const renderReset = (idx) =>{
   $('.betMI'+idx).val('');
   $('.betMultiTotalWinnings'+idx).text('');
 }
+const predictClean = (idx) =>{
+  $('.awayOdds'+idx).removeClass('predictGameLeft');
+  $('.awayLogo'+idx).removeClass('predictGameRight');
+  $('.homeOdds'+idx).removeClass('predictGameRight');
+  $('.homeLogo'+idx).removeClass('predictGameLeft');
+
+  $('.predictPicksDiv'+idx).text('');
+}
+
+
+/* 베팅하기 버튼 */
+const betSingleButton = (userInfo, userPick, date, pick, idx)=>{
+  /* 1)firebase userPick DB에 upload  && redux state(userPick) 변경*/
+  let id = userInfo.id;
+  let balance = userPick.balance;
+  let stake = $('.betSI'+idx).val();
+
+  for(let i=0; i<pick.length; i++){
+    firebase.database().ref('userPick/'+id+'/'+date+'/s/'+pick[i].away+'_'+pick[i].home).set({
+      win:pick[i].win,
+      stake:stake,
+      odds:pick[i].odds,
+      hit:'yet'
+    });
+
+    store.dispatch(actions.singleUp(idx-1, stake, pick[i]));
+  }
+
+  balance -= stake * pick.length;
+  firebase.database().ref('userPick/'+id+'/'+date+'/balance').set(balance);
+  store.dispatch(actions.calBalance(idx-1, balance));
+
+
+  /* 2)redux state (pick) 변경 */
+  switch (idx) {
+    case '3':
+      store.dispatch({type:'PICKCLEAN'});
+      break;
+    case '4':
+      store.dispatch({type:'PICK1CLEAN'});
+      break;
+    case '5':
+      store.dispatch({type:'PICK2CLEAN'});
+      break;
+    default:
+      alert('error 관리자에게 문의해주세요.');
+  }
+
+
+  /* 3) css, text 직접 삭제 */
+  predictClean(idx);
+
+
+}
+const betMultiButton = ()=>{
+  firebase.database().ref('userPick/cjsdud/20160812/m/0').set({
+    game:['cle_sa_0','okc_gs_1','ny_chi_0'],
+    stake:'10,000',
+    odds:'2.1',
+    hit:'yet'
+  });
+  firebase.database().ref('userPick/cjsdud/20160810/balance').set('100,000');
+}
 
 
 var PredictBet = React.createClass({
@@ -62,7 +131,10 @@ var PredictBet = React.createClass({
 
   },
   render() {
+    let userInfo = this.props.userInfo;
+    let userPick = {};
     let idx = this.props.idx;
+    let date = utils.getCurrentDate(idx-3);
     let pick = {};
 
     /* 그제, 어제는 베팅할 필요가 없음 */
@@ -72,12 +144,15 @@ var PredictBet = React.createClass({
     switch (idx) {
       case '3':
         pick = this.props.pick;
+        userPick = this.props.userPick[2];
         break;
       case '4':
         pick = this.props.pick1;
+        userPick = this.props.userPick[3];
         break;
       case '5':
         pick = this.props.pick2;
+        userPick = this.props.userPick[4];
         break;
       default:
         alert('error 관리자에게 문의해주세요.');
@@ -146,7 +221,8 @@ var PredictBet = React.createClass({
                   </tr>
                 </tbody>
               </table>
-              <button type="button" className={"btn betButton betSingleButton"+idx} onClick={()=>{console.log('클릭클릭')}} >베팅하기</button>
+              <button type="button" className={"btn betButton betSingleButton"+idx}
+                onClick={betSingleButton.bind(this, userInfo, userPick, date, pick, idx)} >베팅하기</button>
             </div>
           </div>
           <div id={'betMulti'+idx} className={'pTab pT'+idx}>
@@ -205,6 +281,8 @@ var PredictBet = React.createClass({
 
 const mapStateToPredictBetProps = (state) =>{
   return {
+    userInfo:state.userInfo,
+    userPick:state.userPick,
     pick:state.pick,
     pick1:state.pick1,
     pick2:state.pick2

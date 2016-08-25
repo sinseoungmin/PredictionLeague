@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import utils from '../../utils'
 
+import actions from '../../actions'
+import {store} from '../../index'
+
 
 const upDownClick = (e) =>{
 
@@ -26,6 +29,22 @@ const upDownClick = (e) =>{
     $(contents).hide();
     $(myPEP).css('box-shadow','0px 2px 5px gray');
   }
+}
+
+
+const singleDown = (userInfo, userPick, date, pick, idx, key)=>{
+  /* firebase userPick DB && redux userPick에서
+     해당 pick 삭제 and Balance 재설정 */
+  let id = userInfo.id;
+  let balance = Number(userPick.balance);
+
+  firebase.database().ref('userPick/'+id+'/'+date+'/s/'+key).set(null);
+  store.dispatch(actions.singleDown(idx-1, key, pick));
+
+  balance += Number(pick.stake);
+  firebase.database().ref('userPick/'+id+'/'+date+'/balance').set(balance);
+  store.dispatch(actions.calBalance(idx-1, balance));
+
 }
 
 
@@ -59,17 +78,19 @@ var MyPredict = React.createClass({
       hit:'yet'
     });
 
-    firebase.database().ref('userPick/cjsdud/20160810/balance').set('100,000');
-    firebase.database().ref('userPick/cjsdud/20160811/balance').set('10,000');
-    firebase.database().ref('userPick/cjsdud/20160812/balance').set('100,000');
+    firebase.database().ref('userPick/cjsdud/20160810/balance').set('100000');
+    firebase.database().ref('userPick/cjsdud/20160811/balance').set('1000');
+    firebase.database().ref('userPick/cjsdud/20160812/balance').set('100000');
     firebase.database().ref('userPick/cjsdud/20160813/balance').set('10');
-    firebase.database().ref('userPick/cjsdud/20160814/balance').set('2,000');
+    firebase.database().ref('userPick/cjsdud/20160814/balance').set('2000');
     */
 
   },
   render() {
     let idx = this.props.idx;
+    let userInfo = this.props.userInfo;
     let userPick = this.props.userPick[idx-1];
+    let date = utils.getCurrentDate(idx-3);
     let multiPick = [];
     let singlePick = [];
 
@@ -83,8 +104,6 @@ var MyPredict = React.createClass({
     if(!!userPick.s){
       singlePick = userPick.s;
     }
-
-    console.log(userPick);
 
     return (
       <div className='MyPredictContainer'>
@@ -134,7 +153,8 @@ var MyPredict = React.createClass({
                      <td>{pick.odds}</td>
                      <td>{pick.stake}</td>
                      <td>
-                       <i className="fa fa-times" aria-hidden="true"></i>
+                       <i className={"fa fa-times singleDown"+idx}
+                         onClick={singleDown.bind(this, userInfo, userPick, date, pick, idx, key)} aria-hidden="true"></i>
                      </td>
                    </tr>
                  );
@@ -149,8 +169,8 @@ var MyPredict = React.createClass({
 
 const mapStateToMyPredictProps = (state) =>{
   return {
-    userPick:
-      state.userPick
+    userInfo:state.userInfo,
+    userPick:state.userPick
   };
 }
 

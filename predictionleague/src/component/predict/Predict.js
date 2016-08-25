@@ -29,7 +29,6 @@ var Predict = React.createClass({
     if(!!this.props.gameInfo){
       gameInfo = this.props.gameInfo;
     };
-    //console.log(gameInfo);
 
     return (
       <div id = 'predictContainer'>
@@ -65,8 +64,7 @@ var Predict = React.createClass({
 
 const mapStateToPredictProps = (state) =>{
   return {
-    gameInfo:
-      state.gameInfo
+    gameInfo:state.gameInfo,
   };
 }
 

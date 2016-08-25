@@ -57,7 +57,7 @@ var PredictDetail = React.createClass({
             <div className='predictPicks'>
               {data.map((game,index) =>{
                 return(
-                  <div key={index} className={'predictPicksDiv pickPosi'+idx+'_'+index}></div>
+                  <div key={index} className={'predictPicksDiv '+'predictPicksDiv'+idx+' pickPosi'+idx+'_'+index}></div>
                 );
               })}
             </div>
