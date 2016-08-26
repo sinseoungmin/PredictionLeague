@@ -25,6 +25,7 @@ const pTypeClick = (e) =>{
 }
 
 
+/* 베팅금액 입력 시 event */
 const betSingleChange = (pick, idx, e) =>{
   let total=0;
 
