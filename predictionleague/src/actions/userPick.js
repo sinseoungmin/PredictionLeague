@@ -6,10 +6,9 @@ const singleUp = (idx, stake, pick) =>{
 		stake
 	};
 }
-const singleDown = (idx, key, pick) =>{
+const singleDown = (idx, key) =>{
 	return {
 		type:'SINGLEDOWN',
-    pick,
 		idx,
 		key
 	};
@@ -24,10 +23,11 @@ const multiUp = (idx, stake, game, odds, mIdx) =>{
 		mIdx
 	};
 }
-const multiDown = (pick) =>{
+const multiDown = (idx, key) =>{
 	return {
 		type:'MULTIDOWN',
-    pick
+    idx,
+		key
 	};
 }
 const calBalance = (idx, balance) =>{

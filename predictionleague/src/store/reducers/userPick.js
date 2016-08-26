@@ -36,7 +36,6 @@ export default function (state = {}, action) {
 
 
     case 'MULTIUP':
-      console.log('MULTIUP');
       /* object key를 내가 원하는 대로 하기 위해서 아얘 객체 새로 만들어서 직접 넣음 */
       let newObject2 = (state[action.idx]? (state[action.idx].m? {...state[action.idx].m} : {}) : {});
       let key2 = action.mIdx;
@@ -54,16 +53,16 @@ export default function (state = {}, action) {
         ...state.slice(Number(action.idx)+1)
       ];
 
-
     case 'MULTIDOWN':
-      console.log('MULTIDOWN');
-      /*
-      let arr = state;
-      let newArr = arr.filter(function(el){
-        return el.away !== action.game.away
-      });
-      return newArr;
-      */
+      let downObject2 = {...state[action.idx].m};
+      let downKey2 = action.key;
+      delete downObject2[downKey2];
+
+     return [
+       ...state.slice(0, action.idx),
+       {...state[action.idx],m: downObject2},
+       ...state.slice(Number(action.idx)+1)
+     ];
 
 
     case 'CALBALANCE':

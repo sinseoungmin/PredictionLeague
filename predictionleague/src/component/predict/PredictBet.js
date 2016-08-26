@@ -91,13 +91,12 @@ const afterButtonClick = (idx) =>{
 
 
 /* 베팅하기 버튼 ( 단일 && 복수 ) */
-const betSingleButton = (userInfo, userPick, date, pick, idx)=>{
+const betSingleButton = (userInfo, userPick, date, pick, idx, balance)=>{
   /* 1)firebase userPick DB에 upload  && redux state(userPick) 변경*/
   let id = userInfo.id;
   let stake = $('.betSI'+idx).val();
 
   /* 1-1) userPick이 기존에 없었거나, 중복된 경기가 pick 됐을 떄, balance를 조정해야 함 */
-  let balance = (userPick? (userPick.balance? userPick.balance : utils.LIMITMONEY) : utils.LIMITMONEY);
   let dupBalance = 0;
   let chkObj = (userPick? (userPick.s? userPick.s : {}) : {});
 
@@ -125,7 +124,7 @@ const betSingleButton = (userInfo, userPick, date, pick, idx)=>{
   afterButtonClick(idx);
 
 }
-const betMultiButton = (userInfo, userPick, date, pick, idx)=>{
+const betMultiButton = (userInfo, userPick, date, pick, idx, balance)=>{
   /* 1)firebase userPick DB에 upload */
   let id = userInfo.id;
   let stake = $('.betMI'+idx).val();
@@ -150,7 +149,6 @@ const betMultiButton = (userInfo, userPick, date, pick, idx)=>{
 
 
   /* 3)balance 조정 */
-  let balance = (userPick? (userPick.balance? userPick.balance : utils.LIMITMONEY) : utils.LIMITMONEY);
   balance -= stake ;
 
   firebase.database().ref('userPick/'+id+'/'+date+'/balance').set(Number(balance));
@@ -203,6 +201,11 @@ var PredictBet = React.createClass({
     /* pick이 바뀔 때, 자동으로 베팅금액 리셋 */
     renderReset(idx);
 
+
+    /* 잔고 */
+    let balance = (userPick? (userPick.balance? userPick.balance : utils.LIMITMONEY) : utils.LIMITMONEY);
+
+
     /* 최종배당률 */
     let multiOdds = 1;
     for(let j=0; j<pick.length; j++){
@@ -245,6 +248,10 @@ var PredictBet = React.createClass({
               <table className='betBottomTable'>
                 <tbody>
                   <tr>
+                    <td>베팅 가능금액</td>
+                    <td className={'betBalance'+idx}>{utils.makeComma(balance)}<span className='betWon'>원</span></td>
+                  </tr>
+                  <tr>
                     <td>경기 별 베팅금액</td>
                     <td><input type='number' className={'betSingleInput betSI'+idx} onChange={betSingleChange.bind(this, pick, idx)}></input><span className='betWon'>원</span></td>
                   </tr>
@@ -259,7 +266,7 @@ var PredictBet = React.createClass({
                 </tbody>
               </table>
               <button type="button" className={"btn betButton betSingleButton"+idx}
-                onClick={betSingleButton.bind(this, userInfo, userPick, date, pick, idx)} >베팅하기</button>
+                onClick={betSingleButton.bind(this, userInfo, userPick, date, pick, idx, balance)} >베팅하기</button>
             </div>
           </div>
           <div id={'betMulti'+idx} className={'pTab pT'+idx}>
@@ -293,6 +300,10 @@ var PredictBet = React.createClass({
                     <td className={'betMultiOdds'+idx}>{multiOdds}</td>
                   </tr>
                   <tr>
+                    <td>베팅 가능금액</td>
+                    <td className={'betBalance'+idx}>{utils.makeComma(balance)}<span className='betWon'>원</span></td>
+                  </tr>
+                  <tr>
                     <td>베팅금액</td>
                     <td><input type='number' className={'betMultiInput betMI'+idx} onChange={betMultiChange.bind(this, idx)}></input><span className='betWon'>원</span></td>
                   </tr>
@@ -303,7 +314,7 @@ var PredictBet = React.createClass({
                 </tbody>
               </table>
               <button type="button" className={"btn betButton betMultiButton"+idx}
-                onClick={betMultiButton.bind(this, userInfo, userPick, date, pick, idx)}>베팅하기</button>
+                onClick={betMultiButton.bind(this, userInfo, userPick, date, pick, idx, balance)}>베팅하기</button>
             </div>
           </div>
         </div>

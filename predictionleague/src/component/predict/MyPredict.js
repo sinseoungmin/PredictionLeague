@@ -39,7 +39,21 @@ const singleDown = (userInfo, userPick, date, pick, idx, key)=>{
   let balance = Number(userPick.balance);
 
   firebase.database().ref('userPick/'+id+'/'+date+'/s/'+key).set(null);
-  store.dispatch(actions.singleDown(idx-1, key, pick));
+  store.dispatch(actions.singleDown(idx-1, key));
+
+  balance += Number(pick.stake);
+  firebase.database().ref('userPick/'+id+'/'+date+'/balance').set(balance);
+  store.dispatch(actions.calBalance(idx-1, balance));
+
+}
+const multiDown = (userInfo, userPick, date, pick, idx, key)=>{
+  /* firebase userPick DB && redux userPick에서
+     해당 pick 삭제 and Balance 재설정 */
+  let id = userInfo.id;
+  let balance = Number(userPick.balance);
+
+  firebase.database().ref('userPick/'+id+'/'+date+'/m/'+key).set(null);
+  store.dispatch(actions.multiDown(idx-1, key));
 
   balance += Number(pick.stake);
   firebase.database().ref('userPick/'+id+'/'+date+'/balance').set(balance);
@@ -50,40 +64,6 @@ const singleDown = (userInfo, userPick, date, pick, idx, key)=>{
 
 var MyPredict = React.createClass({
   componentDidMount(){
-    /*  firebase db setting test
-    firebase.database().ref('userPick/cjsdud/20160810/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
-    firebase.database().ref('userPick/cjsdud/20160811/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
-    firebase.database().ref('userPick/cjsdud/20160812/s/okc_gs').set({win:'gs', stake:'20,000', odds:'1.9',hit:'yet'});
-    firebase.database().ref('userPick/cjsdud/20160812/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
-    firebase.database().ref('userPick/cjsdud/20160812/s/ny_chi').set({win:'chi', stake:'13,300', odds:'5.1',hit:'yet'});
-    firebase.database().ref('userPick/cjsdud/20160813/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
-    firebase.database().ref('userPick/cjsdud/20160814/s/cle_sa').set({win:'cle', stake:'10,000', odds:'2.1',hit:'yet'});
-
-    firebase.database().ref('userPick/cjsdud/20160812/m/0').set({
-      game:['cle_sa_0','okc_gs_1','ny_chi_0'],
-      stake:'10,000',
-      odds:'2.1',
-      hit:'yet'
-    });
-    firebase.database().ref('userPick/cjsdud/20160812/m/1').set({
-      game:['por_hou_1','phi_lal_1'],
-      stake:'40,000',
-      odds:'12.1',
-      hit:'yet'
-    });
-    firebase.database().ref('userPick/cjsdud/20160812/m/2').set({
-      game:['lac_lal_0'],
-      stake:'10,000',
-      odds:'32.1',
-      hit:'yet'
-    });
-
-    firebase.database().ref('userPick/cjsdud/20160810/balance').set('100000');
-    firebase.database().ref('userPick/cjsdud/20160811/balance').set('1000');
-    firebase.database().ref('userPick/cjsdud/20160812/balance').set('100000');
-    firebase.database().ref('userPick/cjsdud/20160813/balance').set('10');
-    firebase.database().ref('userPick/cjsdud/20160814/balance').set('2000');
-    */
 
   },
   render() {
@@ -141,7 +121,8 @@ var MyPredict = React.createClass({
                     <td>{pick.odds}</td>
                     <td>{pick.stake}</td>
                     <td>
-                      <i className="fa fa-times" aria-hidden="true"></i>
+                      <i className="fa fa-times"
+                        onClick={multiDown.bind(this, userInfo, userPick, date, pick, idx, key)} aria-hidden="true"></i>
                     </td>
                   </tr>
                 );
