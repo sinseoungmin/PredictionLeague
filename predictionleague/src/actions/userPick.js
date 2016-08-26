@@ -14,10 +14,14 @@ const singleDown = (idx, key, pick) =>{
 		key
 	};
 }
-const multiUp = (pick) =>{
+const multiUp = (idx, stake, game, odds, mIdx) =>{
 	return {
 		type:'MULTIUP',
-    pick
+    idx,
+		stake,
+		game,
+		odds,
+		mIdx
 	};
 }
 const multiDown = (pick) =>{

@@ -61,40 +61,11 @@ const renderReset = (idx) =>{
   $('.betMI'+idx).val('');
   $('.betMultiTotalWinnings'+idx).text('');
 }
-const predictClean = (idx) =>{
-  $('.awayOdds'+idx).removeClass('predictGameLeft');
-  $('.awayLogo'+idx).removeClass('predictGameRight');
-  $('.homeOdds'+idx).removeClass('predictGameRight');
-  $('.homeLogo'+idx).removeClass('predictGameLeft');
 
-  $('.predictPicksDiv'+idx).text('');
-}
+/* 베팅하기 버튼 클릭 후 필요한 작업 */
+const afterButtonClick = (idx) =>{
 
-
-/* 베팅하기 버튼 */
-const betSingleButton = (userInfo, userPick, date, pick, idx)=>{
-  /* 1)firebase userPick DB에 upload  && redux state(userPick) 변경*/
-  let id = userInfo.id;
-  let balance = userPick.balance;
-  let stake = $('.betSI'+idx).val();
-
-  for(let i=0; i<pick.length; i++){
-    firebase.database().ref('userPick/'+id+'/'+date+'/s/'+pick[i].away+'_'+pick[i].home).set({
-      win:pick[i].win,
-      stake:stake,
-      odds:pick[i].odds,
-      hit:'yet'
-    });
-
-    store.dispatch(actions.singleUp(idx-1, stake, pick[i]));
-  }
-
-  balance -= stake * pick.length;
-  firebase.database().ref('userPick/'+id+'/'+date+'/balance').set(balance);
-  store.dispatch(actions.calBalance(idx-1, balance));
-
-
-  /* 2)redux state (pick) 변경 */
+  /* 1)redux state (pick) 변경 */
   switch (idx) {
     case '3':
       store.dispatch({type:'PICKCLEAN'});
@@ -109,20 +80,86 @@ const betSingleButton = (userInfo, userPick, date, pick, idx)=>{
       alert('error 관리자에게 문의해주세요.');
   }
 
+  /* 2) css, text 직접 삭제 */
+  $('.awayOdds'+idx).removeClass('predictGameLeft');
+  $('.awayLogo'+idx).removeClass('predictGameRight');
+  $('.homeOdds'+idx).removeClass('predictGameRight');
+  $('.homeLogo'+idx).removeClass('predictGameLeft');
 
-  /* 3) css, text 직접 삭제 */
-  predictClean(idx);
+  $('.predictPicksDiv'+idx).text('');
+}
 
+
+/* 베팅하기 버튼 ( 단일 && 복수 ) */
+const betSingleButton = (userInfo, userPick, date, pick, idx)=>{
+  /* 1)firebase userPick DB에 upload  && redux state(userPick) 변경*/
+  let id = userInfo.id;
+  let stake = $('.betSI'+idx).val();
+
+  /* 1-1) userPick이 기존에 없었거나, 중복된 경기가 pick 됐을 떄, balance를 조정해야 함 */
+  let balance = (userPick? (userPick.balance? userPick.balance : utils.LIMITMONEY) : utils.LIMITMONEY);
+  let dupBalance = 0;
+  let chkObj = (userPick? (userPick.s? userPick.s : {}) : {});
+
+  for(let i=0; i<pick.length; i++){
+    firebase.database().ref('userPick/'+id+'/'+date+'/s/'+pick[i].away+'_'+pick[i].home).set({
+      win:pick[i].win,
+      stake:stake,
+      odds:pick[i].odds,
+      hit:'yet'
+    });
+
+    if(!!chkObj.hasOwnProperty(pick[i].away+'_'+pick[i].home)){
+      dupBalance += Number(chkObj[pick[i].away+'_'+pick[i].home].stake);
+    }
+    store.dispatch(actions.singleUp(idx-1, stake, pick[i]));
+  }
+
+  balance = balance + dupBalance - stake * pick.length;
+
+  firebase.database().ref('userPick/'+id+'/'+date+'/balance').set(Number(balance));
+  store.dispatch(actions.calBalance(idx-1, Number(balance)));
+
+
+  /* 3)마무리 작업 */
+  afterButtonClick(idx);
 
 }
-const betMultiButton = ()=>{
-  firebase.database().ref('userPick/cjsdud/20160812/m/0').set({
-    game:['cle_sa_0','okc_gs_1','ny_chi_0'],
-    stake:'10,000',
-    odds:'2.1',
+const betMultiButton = (userInfo, userPick, date, pick, idx)=>{
+  /* 1)firebase userPick DB에 upload */
+  let id = userInfo.id;
+  let stake = $('.betMI'+idx).val();
+  let odds = $('.betMultiOdds'+idx).text();
+  let mIdx = utils.randKey(10);
+
+  let game ={};
+  for(let i=0; i<pick.length; i++){
+    game[pick[i].away+'_'+pick[i].home] = pick[i].win;
+  }
+
+  firebase.database().ref('userPick/'+id+'/'+date+'/m/'+mIdx).set({
+    game:game,
+    stake:stake,
+    odds:odds,
     hit:'yet'
   });
-  firebase.database().ref('userPick/cjsdud/20160810/balance').set('100,000');
+
+
+  /* 2)redux state(userPick) 변경 */
+  store.dispatch(actions.multiUp(idx-1, stake, game, odds, mIdx));
+
+
+  /* 3)balance 조정 */
+  let balance = (userPick? (userPick.balance? userPick.balance : utils.LIMITMONEY) : utils.LIMITMONEY);
+  balance -= stake ;
+
+  firebase.database().ref('userPick/'+id+'/'+date+'/balance').set(Number(balance));
+  store.dispatch(actions.calBalance(idx-1, Number(balance)));
+
+
+  /* 3)마무리 작업 */
+  afterButtonClick(idx);
+
 }
 
 
@@ -265,7 +302,8 @@ var PredictBet = React.createClass({
                   </tr>
                 </tbody>
               </table>
-              <button type="button" className={"btn betButton betMultiButton"+idx} onClick={()=>{console.log('클릭클릭')}} >베팅하기</button>
+              <button type="button" className={"btn betButton betMultiButton"+idx}
+                onClick={betMultiButton.bind(this, userInfo, userPick, date, pick, idx)}>베팅하기</button>
             </div>
           </div>
         </div>

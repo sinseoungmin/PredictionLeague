@@ -1,5 +1,9 @@
 var utils = {};
 
+/*  상수  */
+utils.LIMITMONEY = 100000;
+
+
 /*  천의 자리  */
 utils.makeComma = (num)=>{
   if(!num){

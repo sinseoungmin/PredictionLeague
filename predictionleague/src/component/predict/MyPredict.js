@@ -91,8 +91,8 @@ var MyPredict = React.createClass({
     let userInfo = this.props.userInfo;
     let userPick = this.props.userPick[idx-1];
     let date = utils.getCurrentDate(idx-3);
-    let multiPick = [];
-    let singlePick = [];
+    let multiPick = {};
+    let singlePick = {};
 
     if(!userPick){
       return(<div></div>);
@@ -110,7 +110,7 @@ var MyPredict = React.createClass({
         <table className={'myPredictEP myPEP'+idx} onClick={upDownClick}>
           <tbody><tr>
             <td>베팅내역</td>
-            <td>{multiPick.length + Object.keys(singlePick).length}</td>
+            <td>{Object.keys(multiPick).length + Object.keys(singlePick).length}</td>
             <td>
               <i className={"fa fa-chevron-down myPredictDown myPAdown"+idx} aria-hidden="true"></i>
               <i className={"fa fa-chevron-up myPredictUp myPAup"+idx} aria-hidden="true"></i>
@@ -125,17 +125,19 @@ var MyPredict = React.createClass({
               </tr>
             </thead>
             <tbody>
-              {multiPick.map((pick,index) =>{
+              {Object.keys(multiPick).map(function(key, index) {
+                let pick = multiPick[key];
                 return(
                   <tr key={index}>
                     <td>복수</td>
-                    <td>{pick.game.map(
-                        (game,index) =>{
-                          return(
-                            <div key={index}>{game + ' and '}</div>
-                          );
-                        }
-                      )}</td>
+                    <td>
+                      {Object.keys(pick.game).map(function(key,index){
+                        let game = pick.game[key];
+                        return(
+                          <div key={index}>{game + ' and '}</div>
+                        );
+                      })}
+                    </td>
                     <td>{pick.odds}</td>
                     <td>{pick.stake}</td>
                     <td>

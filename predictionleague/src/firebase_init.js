@@ -51,7 +51,7 @@ const userPick= (store, id)=>{
 
   let t = [];
   for(let i=0; i<5; i++){
-    t[i] = utils.getCurrentDate(i-15);
+    t[i] = utils.getCurrentDate(i-2);
   }
 
   firebase.database().ref('userPick/'+id+'/'+t[0]).once('value').then(function(snapshot) {
@@ -84,7 +84,7 @@ const gameInfo= (store)=>{
 
   let t = [];
   for(let i=0; i<5; i++){
-    t[i] = utils.getCurrentDate(i-15);
+    t[i] = utils.getCurrentDate(i-16);
   }
 
   firebase.database().ref('predict/gameInfo/'+t[0]).once('value').then(function(snapshot) {
