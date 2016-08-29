@@ -1,5 +1,5 @@
 export default{
-  20160810:[
+  20160827:[
     {
       home:'atl',
       home_odds:1.84,
@@ -91,7 +91,7 @@ export default{
       away_odds:2.09
     }
   ],
-  20160811:[
+  20160828:[
     {
       home:'hou',
       home_odds:1.84,
@@ -129,7 +129,7 @@ export default{
       away_odds:2.09
     }
   ],
-  20160812:[
+  20160829:[
     {
       home:'mia',
       home_odds:1.84,
@@ -179,7 +179,7 @@ export default{
       away_odds:2.09
     }
   ],
-  20160813:[
+  20160830:[
     {
       home:'atl',
       home_odds:1.84,
@@ -211,7 +211,7 @@ export default{
       away_odds:2.1
     }
   ],
-  20160814:[
+  20160831:[
     {
       home:'por',
       home_odds:2.24,

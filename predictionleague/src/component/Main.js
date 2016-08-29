@@ -6,6 +6,7 @@ import Header from './common/Header'
 import Footer from './common/Footer'
 import Navi from './common/Navi'
 import LoginModal from './modal/LoginModal'
+import LogoutModal from './modal/LogoutModal'
 import JoinModal from './modal/JoinModal'
 import AlertModal from './modal/AlertModal'
 import LoadingModal from './modal/LoadingModal'
@@ -34,6 +35,7 @@ var Main = React.createClass({
         <Footer />
         <Navi />
         <LoginModal />
+        <LogoutModal />
         <JoinModal />
         <AlertModal />
         <LoadingModal />

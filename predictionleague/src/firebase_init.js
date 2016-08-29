@@ -84,22 +84,22 @@ const gameInfo= (store)=>{
 
   let t = [];
   for(let i=0; i<5; i++){
-    t[i] = utils.getCurrentDate(i-16);
+    t[i] = utils.getCurrentDate(i-2);
   }
 
-  firebase.database().ref('predict/gameInfo/'+t[0]).once('value').then(function(snapshot) {
+  firebase.database().ref('gameInfo/'+t[0]).once('value').then(function(snapshot) {
     game[0] = snapshot.val();
 
-    firebase.database().ref('predict/gameInfo/'+t[1]).once('value').then(function(snapshot) {
+    firebase.database().ref('gameInfo/'+t[1]).once('value').then(function(snapshot) {
       game[1] = snapshot.val();
 
-      firebase.database().ref('predict/gameInfo/'+t[2]).once('value').then(function(snapshot) {
+      firebase.database().ref('gameInfo/'+t[2]).once('value').then(function(snapshot) {
         game[2] = snapshot.val();
 
-        firebase.database().ref('predict/gameInfo/'+t[3]).once('value').then(function(snapshot) {
+        firebase.database().ref('gameInfo/'+t[3]).once('value').then(function(snapshot) {
           game[3] = snapshot.val();
 
-          firebase.database().ref('predict/gameInfo/'+t[4]).once('value').then(function(snapshot) {
+          firebase.database().ref('gameInfo/'+t[4]).once('value').then(function(snapshot) {
             game[4] = snapshot.val();
 
             console.log('=================== gameInfo download!!!');

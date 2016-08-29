@@ -18,20 +18,37 @@ const loginClick = ()=>{
   $('#loginModal').modal();
   //$('#joinModal').modal();
 }
+const logoutClick = ()=>{
+  console.log('클릭');
+  $('#logoutModal').modal();
+}
 
 var Header = React.createClass({
   componentDidMount(){
+    /* gameInfo setting
+      var rawData = basic;
+      console.log('여기여기');
+      console.log(rawData);
 
+      Object.keys(rawData).map(function(key, index) {
+        let gameList = rawData[key];
+        firebase.database().ref('gameInfo/'+key).set(gameList);
+      });
+    */
   },
   render() {
-    //console.log('header에 있는 state');
-    //console.log(this.props.currentState);
+    console.log('header에 있는 state');
+    console.log(this.props.currentState);
+    let loginFlag = this.props.currentState.login;
     return (
       <div id = 'headerContainer'>
         <div id = 'headTitle'>
           <i className="fa fa-bolt"  onClick={homeClick} style={{fontSize:'20px', color:'yellow'}} aria-hidden="true"></i>
           <span className='inline'  onClick={homeClick} style={{fontSize:'20px', fontWeight: '400'}} > Prediction League </span>
-          <i id='menuIcon' onClick={loginClick} className="fa fa-unlock-alt" style={{fontSize:'24px'}} aria-hidden="true"></i>
+          {
+            loginFlag? <i id='menuIcon' onClick={logoutClick} className="fa fa-user" style={{fontSize:'22px'}} aria-hidden="true"></i>
+            : <i id='menuIcon' onClick={loginClick} className="fa fa-unlock" style={{fontSize:'22px'}} aria-hidden="true"></i>
+          }
         </div>
         <div id = 'headNav'>
         </div>

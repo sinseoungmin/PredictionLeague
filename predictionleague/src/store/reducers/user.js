@@ -14,6 +14,20 @@ export default function (state = {}, action) {
     		aRate:action.aRate,
     		maxOdds:action.maxOdds
       }
+    case 'LOGOUT':
+      return {
+        ...state,
+        login:false,
+        email:'',
+        id:'',
+        imgUrl:'',
+    		nickName:'',
+    		team:'',
+    		position:'',
+    		cWinnings:'',
+    		aRate:'',
+    		maxOdds:''
+      }
     default:
       return state;
   }
