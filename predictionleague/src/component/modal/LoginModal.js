@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 
 
 const loginClick = ()=>{
+  $('#loadingModal').modal();
+
   let id = document.getElementById('idInput').value;
   let pw = document.getElementById('pwInput').value;
 
@@ -10,6 +12,7 @@ const loginClick = ()=>{
   firebase.database().ref('id-email/'+id).once('value').then(function(snapshot) {
     if(!snapshot.val()){
       console.log('없는 아이디 입니다.');
+      $('#loadingModal').modal('toggle');
       return;
     }
 
@@ -20,14 +23,20 @@ const loginClick = ()=>{
     if(validate == 'Y'){
 
       /* 3)firebase 로그인 */
-      firebase.auth().signInWithEmailAndPassword(email, pw).catch(function(error) {
+      firebase.auth().signInWithEmailAndPassword(email, pw).then(function(){
+        $('#loginModal').modal('toggle');
+        $('#loadingModal').modal('toggle');
+      }).catch(function(error) {
         console.log(error);
+        $('#loadingModal').modal('toggle');
       });
     }
     else if(validate == 'N'){
+      $('#loadingModal').modal('toggle');
       console.log('아직 인증되지 않은 이메일 입니다.');
     }
     else{
+      $('#loadingModal').modal('toggle');
       console.log('시스템 에러 입니다.');
     }
   });

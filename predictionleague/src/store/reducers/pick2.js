@@ -11,6 +11,10 @@ export default function (state = [], action) {
       return newArr;
     case 'PICK2CLEAN':
       return [];
+    case 'LOGIN':
+      return [];
+    case 'LOGOUT':
+      return [];
     default:
       return state;
   }

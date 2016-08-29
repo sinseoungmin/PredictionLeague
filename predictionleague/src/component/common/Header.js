@@ -16,10 +16,8 @@ const homeClick = ()=>{
 
 const loginClick = ()=>{
   $('#loginModal').modal();
-  //$('#joinModal').modal();
 }
 const logoutClick = ()=>{
-  console.log('클릭');
   $('#logoutModal').modal();
 }
 
@@ -37,8 +35,6 @@ var Header = React.createClass({
     */
   },
   render() {
-    console.log('header에 있는 state');
-    console.log(this.props.currentState);
     let loginFlag = this.props.currentState.login;
     return (
       <div id = 'headerContainer'>
@@ -60,8 +56,7 @@ var Header = React.createClass({
 
 const mapStateToHeaderProps = (state) =>{
   return {
-    currentState:
-      state.userInfo
+    currentState: state.userInfo
   };
 }
 

@@ -204,7 +204,7 @@ var PredictBet = React.createClass({
 
 
     /* 잔고 */
-    let balance = (userPick? (userPick.balance? userPick.balance : utils.LIMITMONEY) : utils.LIMITMONEY);
+    let balance = (userPick? userPick.balance : utils.LIMITMONEY);
 
 
     /* 최종배당률 */
@@ -324,10 +324,7 @@ var PredictBet = React.createClass({
 
   }
 });
-/*
-- userBetting/아이디/날짜/S/원정팀_홈팀 => win, stake, odds, hit:'Y'or'N'
-- userBetting/아이디/날짜/M/index => game:{key:원정팀_홈팀, value:away or home}, stake, odds, hit:'Y'or'N'
-*/
+
 
 const mapStateToPredictBetProps = (state) =>{
   return {

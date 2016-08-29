@@ -4,10 +4,9 @@ import {store} from '../../index'
 
 const logoutClick = ()=>{
   firebase.auth().signOut().then(function() {
-    console.log('로그아웃');
     store.dispatch({type:'LOGOUT'});
+    $('#logoutModal').modal('toggle');
   }, function(error) {
-    console.log('로그아웃 실패!!');
     console.log(error);
   });
 }
