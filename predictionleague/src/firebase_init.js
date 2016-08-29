@@ -104,7 +104,6 @@ const gameInfo= (store)=>{
 
             console.log('=================== gameInfo download!!!');
             store.dispatch(actions.gameInfo(game));
-            //store.dispatch(actions.login('e1','id1','ni1'));
           });
         });
       });
@@ -119,11 +118,12 @@ export default function(store) {
     firebase.initializeApp(config);
     //console.log(firebase);
 
+    /*  Database load  */
+    gameInfo(store);
+    
     /*  로그인 상태인지 확인  */
     loginCheck(store)
 
-    /*  Database load  */
-    gameInfo(store);
 }
 
 /*

@@ -24,7 +24,7 @@ var Predict = React.createClass({
   },
 
   render() {
-    console.log('predict render');
+    //console.log('predict render');
     let gameInfo='';
     if(!!this.props.gameInfo){
       gameInfo = this.props.gameInfo;
