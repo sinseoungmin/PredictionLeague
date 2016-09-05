@@ -10,6 +10,13 @@ var config = {
   storageBucket: "prediction-league.appspot.com",
 };
 
+let t = [];
+for(let i=0; i<5; i++){
+  t[i] = utils.getCurrentDate(i-9);
+}
+let game = [];
+let pick = [];
+
 
 /*  로그인 상태 확인  */
 const loginCheck = (store)=>{
@@ -47,68 +54,86 @@ const loginCheck = (store)=>{
 /*  베팅내역 불러오기  */
 const userPick= (store, id)=>{
 
-  let pick = [];
-
-  let t = [];
-  for(let i=0; i<5; i++){
-    t[i] = utils.getCurrentDate(i-2);
-  }
-
-  firebase.database().ref('userPick/'+id+'/'+t[0]).once('value').then(function(snapshot) {
-    pick[0] = snapshot.val();
-
-    firebase.database().ref('userPick/'+id+'/'+t[1]).once('value').then(function(snapshot) {
-      pick[1] = snapshot.val();
-
-      firebase.database().ref('userPick/'+id+'/'+t[2]).once('value').then(function(snapshot) {
-        pick[2] = snapshot.val();
-
-        firebase.database().ref('userPick/'+id+'/'+t[3]).once('value').then(function(snapshot) {
-          pick[3] = snapshot.val();
-
-          firebase.database().ref('userPick/'+id+'/'+t[4]).once('value').then(function(snapshot) {
-            pick[4] = snapshot.val();
-
-            console.log('=================== userPick download!!!');
-            store.dispatch(actions.userPick(pick));
-          });
+    let pick1 = new Promise(function (resolve, reject) {
+        firebase.database().ref('userPick/'+id+'/'+t[0]).once('value').then(function(snapshot) {
+            pick[0] = snapshot.val();
+            resolve("game1 success");
         });
-      });
     });
-  });
+    let pick2 = new Promise(function (resolve, reject) {
+        firebase.database().ref('userPick/'+id+'/'+t[1]).once('value').then(function(snapshot) {
+            pick[1] = snapshot.val();
+            resolve("game2 success");
+        });
+    });
+    let pick3 = new Promise(function (resolve, reject) {
+        firebase.database().ref('userPick/'+id+'/'+t[2]).once('value').then(function(snapshot) {
+            pick[2] = snapshot.val();
+            resolve("game3 success");
+        });
+    });
+    let pick4 = new Promise(function (resolve, reject) {
+        firebase.database().ref('userPick/'+id+'/'+t[3]).once('value').then(function(snapshot) {
+            pick[3] = snapshot.val();
+            resolve("game4 success");
+        });
+    });
+    let pick5 = new Promise(function (resolve, reject) {
+        firebase.database().ref('userPick/'+id+'/'+t[4]).once('value').then(function(snapshot) {
+            pick[4] = snapshot.val();
+            resolve("game5 success");
+        });
+    });
+
+
+    Promise.all([pick1, pick2, pick3, pick4, pick5]).then(function (values) {
+    	//console.log("모두 완료됨", values);
+        console.log('=================== userPick download!!!');
+        store.dispatch(actions.userPick(pick));
+    });
 }
 
 /*  game 정보 불러오기  */
+
 const gameInfo= (store)=>{
-  let game = [];
-
-  let t = [];
-  for(let i=0; i<5; i++){
-    t[i] = utils.getCurrentDate(i-2);
-  }
-
-  firebase.database().ref('gameInfo/'+t[0]).once('value').then(function(snapshot) {
-    game[0] = snapshot.val();
-
-    firebase.database().ref('gameInfo/'+t[1]).once('value').then(function(snapshot) {
-      game[1] = snapshot.val();
-
-      firebase.database().ref('gameInfo/'+t[2]).once('value').then(function(snapshot) {
-        game[2] = snapshot.val();
-
-        firebase.database().ref('gameInfo/'+t[3]).once('value').then(function(snapshot) {
-          game[3] = snapshot.val();
-
-          firebase.database().ref('gameInfo/'+t[4]).once('value').then(function(snapshot) {
-            game[4] = snapshot.val();
-
-            console.log('=================== gameInfo download!!!');
-            store.dispatch(actions.gameInfo(game));
-          });
+    //console.log('시작');
+    let game1 = new Promise(function (resolve, reject) {
+        firebase.database().ref('gameInfo/'+t[0]).once('value').then(function(snapshot) {
+            game[0] = snapshot.val();
+            resolve("game1 success");
         });
-      });
     });
-  });
+    let game2 = new Promise(function (resolve, reject) {
+        firebase.database().ref('gameInfo/'+t[1]).once('value').then(function(snapshot) {
+            game[1] = snapshot.val();
+            resolve("game2 success");
+        });
+    });
+    let game3 = new Promise(function (resolve, reject) {
+        firebase.database().ref('gameInfo/'+t[2]).once('value').then(function(snapshot) {
+            game[2] = snapshot.val();
+            resolve("game3 success");
+        });
+    });
+    let game4 = new Promise(function (resolve, reject) {
+        firebase.database().ref('gameInfo/'+t[3]).once('value').then(function(snapshot) {
+            game[3] = snapshot.val();
+            resolve("game4 success");
+        });
+    });
+    let game5 = new Promise(function (resolve, reject) {
+        firebase.database().ref('gameInfo/'+t[4]).once('value').then(function(snapshot) {
+            game[4] = snapshot.val();
+            resolve("game5 success");
+        });
+    });
+
+
+    Promise.all([game1, game2, game3, game4, game5]).then(function (values) {
+    	//console.log("모두 완료됨", values);
+        console.log('=================== gameInfo download!!!');
+        store.dispatch(actions.gameInfo(game));
+    });
 }
 
 
@@ -120,7 +145,7 @@ export default function(store) {
 
     /*  Database load  */
     gameInfo(store);
-    
+
     /*  로그인 상태인지 확인  */
     loginCheck(store)
 
