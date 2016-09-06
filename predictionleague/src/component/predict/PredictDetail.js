@@ -44,7 +44,9 @@ var PredictDetail = React.createClass({
                 <td>vs</td>
                 <td>홈팀</td>
                 <td> </td>
-                <td>Pick</td>
+                <td>
+                    {idx<3? '승리' : 'Pick'}
+                </td>
               </tr>
             </tbody>
           </table>

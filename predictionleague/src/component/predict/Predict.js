@@ -9,18 +9,6 @@ var Predict = React.createClass({
 
   componentDidMount(){
     utils.naviColor('Predict');
-    /*
-    firebase.database().ref('userBetting/cjsdud/20160818/s/away_home').set({
-      win:'away',
-      stake:'5만',
-      odds:2.1
-    });
-    firebase.database().ref('userBetting/cjsdud/20160818/m/01').set({
-      game:{cavs_phi_0:1,gs_sa_1:2, hou_chi_0:3},
-      stake:'5만',
-      odds:2.1
-    });
-    */
   },
 
   render() {

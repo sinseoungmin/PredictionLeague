@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import utils from '../../utils'
+import IRanking from './IRanking'
+import TRanking from './TRanking'
 
 var Ranking = React.createClass({
   componentDidMount(){
@@ -15,10 +17,10 @@ var Ranking = React.createClass({
         </ul>
         <div className='tabContainer'>
           <div id='rankingTab1' className='rankingTab tabContent tabClick'>
-            내정보
+            <IRanking />
           </div>
           <div id='rankingTab2' className='rankingTab tabContent'>
-            베팅
+            <TRanking />
           </div>
         </div>
       </div>

@@ -94,7 +94,6 @@ const userPick= (store, id)=>{
 }
 
 /*  game 정보 불러오기  */
-
 const gameInfo= (store)=>{
     //console.log('시작');
     let game1 = new Promise(function (resolve, reject) {
