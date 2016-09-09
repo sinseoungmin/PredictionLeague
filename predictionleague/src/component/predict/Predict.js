@@ -9,10 +9,11 @@ var Predict = React.createClass({
 
   componentDidMount(){
     utils.naviColor('Predict');
+    console.log('predict 디드마운트');
   },
 
   render() {
-    //console.log('predict render');
+    console.log('predict render');
     let gameInfo='';
     if(!!this.props.gameInfo){
       gameInfo = this.props.gameInfo;
