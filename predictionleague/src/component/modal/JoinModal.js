@@ -412,7 +412,7 @@ var JoinModal = React.createClass({
                         if(index<5){
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
-                              <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <div className={'joinNBAlogo '+url+'Logo'}></div>
                               <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
@@ -424,7 +424,7 @@ var JoinModal = React.createClass({
                         if(index>=5 && index <10){
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
-                              <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <div className={'joinNBAlogo '+url+'Logo'}></div>
                               <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
@@ -436,7 +436,7 @@ var JoinModal = React.createClass({
                         if(index>=10){
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
-                              <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <div className={'joinNBAlogo '+url+'Logo'}></div>
                               <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
@@ -454,7 +454,7 @@ var JoinModal = React.createClass({
                         if(index<5){
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
-                              <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <div className={'joinNBAlogo '+url+'Logo'}></div>
                               <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
@@ -466,7 +466,7 @@ var JoinModal = React.createClass({
                         if(index>=5 && index <10){
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
-                              <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <div className={'joinNBAlogo '+url+'Logo'}></div>
                               <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );
@@ -478,7 +478,7 @@ var JoinModal = React.createClass({
                         if(index>=10){
                           return(
                             <td name={url} className='joinTeamEx' onClick={teamClick} key={index}>
-                              <img className='joinNBAlogo' src={'/image/teamLogo/'+url+'.gif'} ></img>
+                              <div className={'joinNBAlogo '+url+'Logo'}></div>
                               <i className="fa fa-check teamCheck" aria-hidden="true"></i>
                             </td>
                           );

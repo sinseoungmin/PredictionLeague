@@ -139,13 +139,13 @@ var PredictGame = React.createClass({
               <div className='gameProbs'>{(rtn/game.away_odds).toFixed(1)+'%'}</div>
             </td>
             <td className={'awayLogo awayLogo'+idx} onClick={gameClick.bind(this, game, idx, y)}>
-              <img className='predictNBAlogo' src={'/image/teamLogo/'+game.away+'.gif'} ></img>
+              <div className={'predictNBAlogo '+game.away+'Logo'} ></div>
             </td>
             <td>
               9:14
             </td>
             <td className={'homeLogo homeLogo'+idx} onClick={gameClick.bind(this, game, idx, y)}>
-              <img className='predictNBAlogo' src={'/image/teamLogo/'+game.home+'.gif'} ></img>
+              <div className={'predictNBAlogo '+game.home+'Logo'} ></div>
             </td>
             <td className={'homeOdds homeOdds'+idx} onClick={gameClick.bind(this, game, idx, y)}>
               <div className='gameOdds'>{game.home_odds}</div>

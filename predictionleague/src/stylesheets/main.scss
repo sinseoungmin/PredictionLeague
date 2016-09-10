@@ -14,6 +14,23 @@ $gameColor:#ECEFF1;
 @import "/component/modal.scss";
 @import "/component/secretEmail.scss";
 
+/* teamLogo */
+$nbaTeams:(
+    'atl','bkn','bos','cha','chi','cle','det','ind','mia','mil','ny','orl','phi','tor','was',
+    'dal','den','gs','hou','lac','lal','mem','min','no','okc','phx','por','sa','sac','uta'
+);
+@each $nbaTeam in $nbaTeams{
+  .#{$nbaTeam}Logo {
+    background-image: url('../../public/image/teamLogo/#{$nbaTeam}.gif');
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+    width:100%;
+    height:100%;
+    border:none;
+  }
+}
+
 
 // 기본 폰트 설정, weight는 100,300,400,500,700,900 사용 가능
 body, table, div, p, span {font-family:'NotoSansKR'}

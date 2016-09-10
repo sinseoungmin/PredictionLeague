@@ -32,6 +32,7 @@ npm install --save firebase
 npm install --save lodash
 npm install --save body-parser(1.15.2)
 npm install nodemailer(2.5.0)
+npm install image-webpack-loader --save-dev
 
 
 ## set up authentication 할 때, database 접근권한 다시 설정해야 함.
