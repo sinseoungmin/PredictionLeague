@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import utils from '../../utils'
+import CircleLoader from './CircleLoader'
 
 
 /*  이메일 인증 함수 */
@@ -43,7 +44,7 @@ var SecretEmail = React.createClass({
         <div id='secretBody'>
           <div>인증 중입니다...</div>
           <div>잠시만 기다려주세요.</div>
-          <div className='circleLoader'></div>
+          <CircleLoader />
         </div>
       </div>
     );

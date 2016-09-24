@@ -13,6 +13,7 @@ $gameColor:#ECEFF1;
 @import "/component/floatButton.scss";
 @import "/component/modal.scss";
 @import "/component/secretEmail.scss";
+@import "/component/circleLoader.scss";
 
 /* teamLogo */
 $nbaTeams:(
@@ -162,26 +163,6 @@ body{
 
 
 /*  loader 모음  */
-.circleLoader {
-  border: 7px solid $pointColor;
-  border-radius: 50%;
-  border-top: 7px solid white;
-  width: 60px;
-  height: 60px;
-  margin-left:auto;
-  margin-right:auto;
-  -webkit-animation: spin 1.5s linear infinite;
-  animation: spin 1.5s linear infinite;
-}
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 .barLoader{
   width:100%;
   height:20px;

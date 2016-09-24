@@ -4,6 +4,7 @@ import utils from '../../utils'
 import PredictGame from './PredictGame'
 import PredictBet from './PredictBet'
 import MyPredict from './MyPredict'
+import CircleLoader from '../common/CircleLoader'
 
 
 var PredictDetail = React.createClass({
@@ -13,11 +14,12 @@ var PredictDetail = React.createClass({
 
   render() {
     //data 불러오기 전에는 loading 표시
-    if(!this.props.data){
+    //if(!this.props.data){
+    if(true){
       return(
         <div className = 'predictDetailContainer'>
           <div className='predictDetailLoader'>
-            <div className='circleLoader'></div>
+            <CircleLoader />
             <div className='predictDetailLoaderText'>
               Loading...
             </div>
