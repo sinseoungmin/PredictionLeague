@@ -8,20 +8,25 @@ var Career = React.createClass({
   },
   render() {
     return (
-      <div id = 'careerContainer'>
-        <ul className='tabUl'>
-          <li name='careerLi1' className='careerTab tabLi tabClick' onClick={utils.tabClick}>커리어</li>
-          <li name='careerLi2' className='careerTab tabLi' onClick={utils.tabClick}>베팅내역</li>
-        </ul>
-        <div className='tabContainer'>
-          <div id='careerTab1' className='careerTab tabContent tabClick'>
-            내정보
-          </div>
-          <div id='careerTab2' className='careerTab tabContent'>
-            베팅
-          </div>
+        <div id = 'careerContainer'>
+            
+            <div id='finder'>
+                <input
+                    id='finderInput'
+                    type='text'
+                    placeholder='닉네임으로 검색'
+                ></input>
+                <i id='finderIcon'
+                    className="fa fa-search"
+                    onClick={()=>{console.log('서치')}}
+                    aria-hidden="true"
+                ></i>
+            </div>
+
+            <div id='careerContents'>
+                커리어 내용 들어가야 됨
+            </div>
         </div>
-      </div>
     );
   }
 });
