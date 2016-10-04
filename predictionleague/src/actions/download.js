@@ -1,7 +1,7 @@
 const gameInfo = (gameInfo) =>{
 	return {
 		type:'GAMEINFO',
-    gameInfo
+    	gameInfo
 	};
 }
 const userPick = (userPick) =>{

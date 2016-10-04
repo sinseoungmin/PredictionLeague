@@ -12,7 +12,7 @@ var config = {
 
 let t = [];
 for(let i=0; i<5; i++){
-  t[i] = utils.getCurrentDate(i-28);
+  t[i] = utils.getCurrentDate(i-38);
 }
 let game = [];
 let pick = [];

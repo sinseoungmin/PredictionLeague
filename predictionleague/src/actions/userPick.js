@@ -16,7 +16,7 @@ const singleDown = (idx, key) =>{
 const multiUp = (idx, stake, game, odds, mIdx) =>{
 	return {
 		type:'MULTIUP',
-    idx,
+    	idx,
 		stake,
 		game,
 		odds,
@@ -26,7 +26,7 @@ const multiUp = (idx, stake, game, odds, mIdx) =>{
 const multiDown = (idx, key) =>{
 	return {
 		type:'MULTIDOWN',
-    idx,
+    	idx,
 		key
 	};
 }
@@ -40,8 +40,8 @@ const calBalance = (idx, balance) =>{
 
 module.exports = {
 	singleUp,
-  singleDown,
-  multiUp,
-  multiDown,
+  	singleDown,
+  	multiUp,
+  	multiDown,
 	calBalance
 };

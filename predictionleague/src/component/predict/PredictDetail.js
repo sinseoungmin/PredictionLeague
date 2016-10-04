@@ -14,8 +14,7 @@ var PredictDetail = React.createClass({
 
   render() {
     //data 불러오기 전에는 loading 표시
-    //if(!this.props.data){
-    if(true){
+    if(!this.props.data){
       return(
         <div className = 'predictDetailContainer'>
           <div className='predictDetailLoader'>

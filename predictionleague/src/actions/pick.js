@@ -1,13 +1,13 @@
 const pickUp = (game) =>{
 	return {
 		type:'PICKUP',
-    game
+    	game
 	};
 }
 const pickDown = (game) =>{
 	return {
 		type:'PICKDOWN',
-    game
+    	game
 	};
 }
 
