@@ -228,7 +228,7 @@ const firebaseJoin = ()=>{
               // 5-1) id-email table
               firebase.database().ref('id-email/' + id).set({email:email, validate:'N'});
               // 5-2) nickName table
-              firebase.database().ref('nickName/' + nickName).set({statue:'done'});
+              firebase.database().ref('nickName/' + nickName).set({id: id});
 
               // 5-3) 사용자 정보 table
               firebase.database().ref('userInfo/' + id).set({

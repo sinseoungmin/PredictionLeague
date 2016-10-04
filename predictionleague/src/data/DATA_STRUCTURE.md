@@ -13,7 +13,8 @@
 
 ## nickName ##
 - 회원가입 시, 중복되는 닉네임이 있는지 확인을 위해
-- key:nickName / value: status
+- 닉네임으로 검색 시 아이디를 찾아내야 함
+- key:nickName / value: id
 
 ## userInfo ## => 로그인 하자마자 바로 다운로드 => redux state(userState)로
 - 사용자의 기본 정보
