@@ -2,17 +2,17 @@ import React from 'react'
 import { Link } from 'react-router'
 import utils from '../../utils'
 
-var IRanking = React.createClass({
+var Team = React.createClass({
   componentDidMount(){
-    
+
   },
   render() {
     return (
-      <div id = 'iRankingContainer'>
-        개인 랭킹
+      <div id = 'teamContainer'>
+        팀 랭킹
       </div>
     );
   }
 });
 
-module.exports = IRanking;
+module.exports = Team;

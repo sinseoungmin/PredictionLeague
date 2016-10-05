@@ -33,12 +33,11 @@
 - key:date
 - value:{away, away_odds, home, home_odds}
 
-## ranking ## => redux state(userState)로
+## ranking ##
 - 랭킹 정보
 - 계속 추가될 예정
-- key:season
-- 2nd Key: id
-- value:{cWinnings, aRate, maxOdds}
+- ranking/시즌/player/아이디 => nickName, team, position, cWinnings, maxOdds, aRate(단일픽? 정의 필요)
+- ranking/시즌/team/팀이름 => 팀 인원, cWinnings, a_cWinnings, maxOdds, aRate
 
 
 @JoinModal
